@@ -1,0 +1,99 @@
+/* 全局容器 */
+.detail-container {
+    background-color: #f5f7fa;
+    min-height: 100vh;
+  }
+  
+  /* 顶部封面区域 */
+  .header-bg {
+    position: relative;
+    height: 300rpx;
+    overflow: hidden;
+  }
+  .course-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8); /* 降低封面亮度，突出文字 */
+  }
+  .course-info {
+    position: absolute;
+    left: 24rpx;
+    bottom: 24rpx;
+    color: #fff;
+    text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.3); /* 文字阴影，增强可读性 */
+  }
+  .course-name {
+    font-size: 36rpx;
+    font-weight: bold;
+    margin-bottom: 8rpx;
+  }
+  .teacher-info {
+    font-size: 26rpx;
+    margin-bottom: 4rpx;
+  }
+  .course-date {
+    font-size: 22rpx;
+    opacity: 0.9;
+  }
+  
+  /* 模块通用样式 */
+  .module {
+    background-color: #fff;
+    border-radius: 24rpx;
+    margin: 20rpx;
+    padding: 24rpx;
+    box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.04);
+  }
+  .module-title {
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: #333;
+    margin-bottom: 24rpx;
+    padding-bottom: 16rpx;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .module-icon {
+    width: 32rpx;
+    height: 32rpx;
+    margin-right: 12rpx;
+  }
+  
+  /* 模块网格布局 */
+  .module-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .grid-item {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20rpx;
+  }
+  .item-icon {
+    width: 80rpx;
+    height: 80rpx;
+    margin-bottom: 12rpx;
+  }
+  .item-name {
+    font-size: 24rpx;
+    color: #666;
+  }
+  
+  /* 小红点提示 */
+  .badge {
+    position: absolute;
+    top: -8rpx;
+    right: -8rpx;
+    width: 32rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    text-align: center;
+    background-color: #ff4d4f;
+    color: #fff;
+    font-size: 20rpx;
+    border-radius: 50%;
+  }

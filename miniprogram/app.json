@@ -1,0 +1,63 @@
+{
+    "pages": [
+      "pages/course/course",
+      "pages/my/my",
+      "pages/index/index",
+      "pages/duihua/duihua",
+      "pages/ketang/ketang",
+      "pages/kecheng/kecheng",
+      "pages/neirong/neirong",
+      "pages/courseDetail/courseDetail",
+      "pages/resource/resource",
+      "pages/task/task",
+      "pages/exam/exam",
+      "pages/class/class",
+      "pages/qa/qa",
+      "pages/group/group",
+      "pages/chat/chat",
+      "pages/practice/practice",
+      "pages/score/score"
+    ],
+    "window": {
+      "backgroundColor": "#F5F7FA",
+      "backgroundTextStyle": "light",
+      "navigationBarBackgroundColor": "#FFFFFF",
+      "navigationBarTitleText": "课程详情",
+      "navigationBarTextStyle": "black",
+      "navigationStyle": "default",
+      "enablePullDownRefresh": false
+    },
+    "tabBar": {
+      "color": "#666666",
+      "selectedColor": "#FFC53D",
+      "backgroundColor": "#FFFFFF",
+      "borderStyle": "black",
+      "position": "bottom",
+      "iconSize": 80,  
+      "height": 90,    
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "text": "学习",
+          "iconPath": "/images/xuexi.png",
+          "selectedIconPath": "/images/xuexi.png"
+        },
+        {
+          "pagePath": "pages/duihua/duihua",
+          "text": "对话",
+          "iconPath": "/images/duihua.png",
+          "selectedIconPath": "/images/duihua.png"
+        },
+        {
+          "pagePath": "pages/my/my",
+          "text": "我的",
+          "iconPath": "/images/my.png",
+          "selectedIconPath": "/images/my.png"
+        }
+      ]
+    },
+    "sitemapLocation": "sitemap.json",
+    "style": "v2",
+    "lazyCodeLoading": "requiredComponents",
+    "cloud": true
+  }

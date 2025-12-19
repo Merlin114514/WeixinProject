@@ -1,0 +1,16 @@
+<view class="course-container">
+  <!-- 周数切换栏 -->
+  <view class="week-switch">
+    <button bindtap="changeWeek" data-week="{{currentWeek - 1}}" disabled="{{currentWeek <= 1}}">上一周</button>
+    <text class="current-week">第 {{currentWeek}} 周</text>
+    <button bindtap="changeWeek" data-week="{{currentWeek + 1}}">下一周</button>
+  </view>
+
+  <!-- ECharts 课表画布 -->
+  <ec-canvas 
+    id="courseChart" 
+    canvas-id="courseChart" 
+    ec="{{ ec }}" 
+    style="width: 100%; height: 700rpx; background: #fff; border-radius: 10rpx; margin-top: 20rpx;"
+  ></ec-canvas>
+</view>

@@ -1,0 +1,72 @@
+<view class="page-container">
+  <!-- 轮播图区域 -->
+  <swiper 
+    indicator-dots="{{true}}" 
+    autoplay="{{true}}" 
+    interval="3000" 
+    duration="500"
+    circular="{{true}}"
+    class="swiper-container"
+  >
+    <block wx:for="{{swiperList}}" wx:key="index">
+      <swiper-item>
+        <image src="{{item.url}}" mode="widthFix" class="swiper-img" />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 功能模块区域 -->
+  <view class="func-container">
+    <!-- 左侧：同步课堂 + 加入课程 -->
+    <view class="func-left">
+      <!-- 同步课堂（跳转ketang页面） -->
+      <view class="func-card" bindtap="navToKetang">
+        <image class="func-icon" src="/images/tongbuketang.png" mode="widthFix" />
+      </view>
+
+      <!-- 加入课程（跳转kecheng页面） -->
+      <view class="func-card" bindtap="navToKecheng">
+        <image class="func-icon" src="/images/jiaruketang.png" mode="widthFix" />
+      </view>
+    </view>
+
+    <view class="func-right" bindtap="navToNeirong">
+      <view class="quality-header">
+      </view>
+      <image class="quality-img" src="/images/jingpingneir.png" mode="widthFix" />
+    </view>
+  </view>
+
+  <!-- 新增：我的课程区域 -->
+  <view class="my-course-container">
+    <!-- 标题栏 -->
+    <view class="course-header">
+      <view class="course-title">我的课程 ({{totalCount}})</view>
+      <view class="course-more" bindtap="navToAllCourse">查看全部 ></view>
+    </view>
+
+    <!-- 课程列表（每行1条，每次加载4条） -->
+    <view class="course-list">
+      <block wx:for="{{courseList}}" wx:key="_id" wx:for-item="course">
+        <!-- 课程项（点击跳转详情） -->
+        <view class="course-item" bindtap="navToCourseDetail" data-course="{{course}}">
+          <!-- 课程封面图 -->
+          <image class="course-img" src="{{course.poster}}" mode="widthFix" />
+          <!-- 课程标签（如“翻转课”） -->
+          <view class="course-tag">翻转课</view>
+          <!-- 课程名称 -->
+          <view class="course-name">{{course.title}}</view>
+          <!-- 功能按钮栏 -->
+          <view class="course-btn-bar">
+            <view class="course-btn" bindtap="navToScore">成绩</view>
+            <view class="course-btn" bindtap="navToExam">作业考试</view>
+            <view class="course-btn" bindtap="navToQa">问答</view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 加载更多按钮 -->
+    <view wx:if="{{hasMore}}" class="load-more-btn" bindtap="loadMoreCourse">加载更多</view>
+  </view>
+</view>

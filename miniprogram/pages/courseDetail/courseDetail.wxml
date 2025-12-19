@@ -1,0 +1,93 @@
+<view class="detail-container">
+  <!-- 顶部封面区域 -->
+  <view class="header-bg">
+    <!-- 课程封面图（从数据库获取） -->
+    <image class="course-poster" src="{{course.poster}}" mode="widthFix" />
+    <!-- 课程信息（悬浮在封面上方） -->
+    <view class="course-info">
+      <view class="course-name">{{course.title}}</view>
+      <view class="teacher-info">
+        {{course.teacher}} | 课程号: {{course.courseNo}}
+      </view>
+      <!-- 日期（从数据库获取） -->
+      <view class="course-date">{{course.add_date}}</view>
+    </view>
+  </view>
+
+  <!-- 学习模块 -->
+  <view class="module">
+    <view class="module-title">
+      <!-- 替换学习模块图标为你项目中的图片 -->
+      <image class="module-icon" src="/images/xuexi.png" /> 学习
+    </view>
+    <view class="module-grid">
+      <view class="grid-item" bindtap="toResource">
+        <!-- 学习资源图标：xuexirenyuan.png -->
+        <image class="item-icon" src="/images/xuexiziyuan.png" />
+        <view class="item-name">学习资源</view>
+      </view>
+      <view class="grid-item" bindtap="toTask">
+        <!-- 学习任务图标：xuexirenyuan.png（或你项目中对应的任务图标） -->
+        <image class="item-icon" src="/images/xuexirenwu.png" />
+        <view class="item-name">学习任务</view>
+        <!-- 小红点提示（有未完成任务时显示） -->
+        <view class="badge" wx:if="{{course.taskBadge}}">1</view>
+      </view>
+      <view class="grid-item" bindtap="toExam">
+        <!-- 作业考试图标：zuoyekaoshi.png -->
+        <image class="item-icon" src="/images/zuoyekaoshi.png" />
+        <view class="item-name">作业考试</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 互动模块 -->
+  <view class="module">
+    <view class="module-title">
+      <!-- 替换互动模块图标为你项目中的图片 -->
+      <image class="module-icon" src="/images/duihua.png" /> 互动
+    </view>
+    <view class="module-grid">
+      <view class="grid-item" bindtap="toClass">
+        <!-- 课堂教学图标：ketangjiaoxue.png -->
+        <image class="item-icon" src="/images/ketangjiaoxue.png" />
+        <view class="item-name">课堂教学</view>
+      </view>
+      <view class="grid-item" bindtap="toQa">
+        <!-- 问答图标：wenda.png -->
+        <image class="item-icon" src="/images/wenda.png" />
+        <view class="item-name">问答</view>
+      </view>
+      <view class="grid-item" bindtap="toGroup">
+        <!-- 小组教学图标：xiaozujiaoxue.png -->
+        <image class="item-icon" src="/images/xaiozujiaoxue.png" />
+        <view class="item-name">小组教学</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 更多模块 -->
+  <view class="module">
+    <view class="module-title">
+      <!-- 替换更多模块图标为你项目中的图片 -->
+      <image class="module-icon" src="/images/my.png" /> 更多
+    </view>
+    <view class="module-grid">
+      <view class="grid-item" bindtap="toChat">
+        <!-- 群聊图标：qunliao.png -->
+        <image class="item-icon" src="/images/qunliao.png" />
+        <view class="item-name">群聊</view>
+      </view>
+      <view class="grid-item" bindtap="toPractice">
+        <!-- 刷题训练图标：（若没有对应图标，可暂用现有图标） -->
+        <image class="item-icon" src="/images/shuatixunlian.png" />
+        <view class="item-name">刷题训练</view>
+      </view>
+      <view class="grid-item" bindtap="toScore">
+        <!-- 成绩分析图标：chengjifenxi.png -->
+        <image class="item-icon" src="/images/chengjifenxi.png" />
+        <view class="item-name">成绩分析</view>
+      </view>
+    </view>
+  </view>
+</view>

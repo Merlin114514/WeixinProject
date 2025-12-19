@@ -1,0 +1,170 @@
+/* 全局样式重置 & 基础配置 */
+page {
+  background-color: #f8f9fa;
+  font-size: 28rpx;
+}
+
+/* 顶部用户信息区（核心：放大头像） */
+.user-header {
+  margin-bottom: 30rpx;
+  width: 100%;
+}
+.user-info-wrap {
+  background-color: #2f80ed;
+  width: 100%;
+  padding: 50rpx 0; /* 同步增加上下内边距，适配大头像 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 10rpx rgba(47, 128, 237, 0.1);
+}
+/* 头像放大+比例优化 */
+.avatar {
+  width: 120rpx;    /* 大幅放大头像 */
+  height: 120rpx;   
+  border-radius: 50%; 
+  background-color: #fff; 
+  padding: 10rpx;   
+  border: 4rpx solid #ffffff;
+  overflow: hidden;
+  margin-bottom: 15rpx; /* 增加头像和文字间距 */
+}
+.wechat-text {
+  color: #fff;
+  font-size: 32rpx; /* 同步放大文字，适配大头像 */
+  font-weight: 500;
+  letter-spacing: 1rpx; /* 增加字间距，提升舒适度 */
+}
+
+/* 学校选课卡片 */
+.course-card {
+    background-color: #fff;
+    border-radius: 16rpx;
+    padding: 20rpx 25rpx;
+    margin-bottom: 20rpx;
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+    width: 100%;
+    box-sizing: border-box; /* 关键：防止内边距导致溢出 */
+  }
+  
+  /* 标题样式 */
+  .course-card .card-title {
+    font-size: 36rpx;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20rpx;
+  }
+  
+  /* 内容行容器：核心布局控制 */
+  .school-info {
+    display: flex;
+    align-items: center;
+    height: 80rpx;
+    gap: 15rpx; /* 校徽/校名/数字区域的统一间距，避免挤在一起 */
+  }
+  
+  /* 校徽容器 */
+  .school-logo-wrap {
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0; /* 禁止校徽区域被压缩 */
+  }
+  /* 校徽大小控制 */
+  .school-info .school-logo {
+    width: 100rpx;  
+    height: 120rpx;
+    border-radius: 8rpx;
+    object-fit: contain;
+    flex-shrink: 0; /* 禁止校徽被压缩 */
+  }
+  /* 绿色对勾（可选） */
+  .school-logo-check {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 22rpx;
+    height: 22rpx;
+    background-color: #07c160;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 16rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* 校名样式：限制宽度，避免挤压数字 */
+  .school-info .school-name {
+    font-size: 34rpx;
+    color: #333;
+    flex-shrink: 1; /* 允许校名适度压缩 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200rpx; /* 固定最大宽度，给数字区域留空间 */
+  }
+  
+  /* 数字+共享课容器：靠近左侧，不溢出 */
+  .course-count {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-grow: 0; /* 禁止数字区域占满剩余空间 */
+    flex-shrink: 0; /* 禁止数字区域被压缩 */
+    margin-left: auto; /* 保证数字区域在右侧，但gap会拉近距离 */
+  }
+  .course-count .count-num {
+    font-size: 48rpx;
+    font-weight: 700;
+    color: #333;
+    line-height: 1;
+  }
+  .course-count .count-label {
+    font-size: 26rpx;
+    color: #999;
+    margin-top: 4rpx;
+    line-height: 1;
+  }
+/* 功能按钮网格（核心修改：按钮宽高一致） */
+.func-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 35rpx 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+  margin-bottom: 100rpx;
+}
+
+/* 功能按钮项：宽高一致，居中对齐 */
+.func-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rpx;
+  width: calc(33.33% - 10rpx); /* 3列均分 */
+  height: 120rpx; /* 固定高度，和宽度比例协调 */
+  padding: 10rpx 0;
+}
+
+/* 功能图标：强制宽高一致 */
+.func-icon {
+  width: 60rpx;  
+  height: 60rpx; /* 宽高完全一致 */
+  margin-bottom: 12rpx;
+  /* 保证图标内容比例正常，不拉伸 */
+  object-fit: contain;
+}
+
+.func-name {
+  font-size: 26rpx;
+  color: #333;
+  /* 文字居中，防止溢出 */
+  text-align: center;
+  white-space: nowrap;
+}
