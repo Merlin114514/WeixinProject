@@ -1,6 +1,6 @@
 echo "# 团队成员分工说明" > team\_member.md
 
-echo "## 孙钦择" >> team\_member.md
+echo "## 组员孙钦择" >> team\_member.md
 
 echo "\*\*角色\*\*：质量保证 (QA) / 测试工程师" >> team\_member.md
 
