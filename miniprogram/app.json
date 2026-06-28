@@ -1,28 +1,38 @@
 {
     "pages": [
-      "pages/course/course",
-      "pages/my/my",
       "pages/index/index",
-      "pages/duihua/duihua",
-      "pages/ketang/ketang",
-      "pages/kecheng/kecheng",
-      "pages/neirong/neirong",
+      "pages/my/my",
+      "pages/classroom-query/classroom-query",
+      "pages/classroom-apply/classroom-apply",
+      "pages/my-apply/my-apply",
+      "pages/audit-list/audit-list",
+      "pages/audit-detail/audit-detail",
+      "pages/course/course",
       "pages/courseDetail/courseDetail",
-      "pages/resource/resource",
-      "pages/task/task",
-      "pages/exam/exam",
-      "pages/class/class",
-      "pages/qa/qa",
-      "pages/group/group",
+      "pages/map/map",
+      "pages/activity/activity",
+      "pages/community/community",
+      "pages/login/login",
+      "pages/register/register",
+      "pages/student-chatlist/student-chatlist",
+      "pages/student-addTeacher/student-addTeacher",
+      "pages/teacher-chatList/teacher-chatList",
+      "pages/teacher-applyList/teacher-applyList",
       "pages/chat/chat",
-      "pages/practice/practice",
-      "pages/score/score"
+      "pages/campus-nav/campus-nav",
+      "pages/teacher-course/teacher-course",
+      "pages/ai-chat/ai-chat",
+      "pages/duihua/duihua",
+      "pages/student-course/student-course",
+      "pages/activity-detail/activity-detail",
+      "pages/activity-audit/activity-audit",
+      "publish-activity/publish-activity"
     ],
     "window": {
       "backgroundColor": "#F5F7FA",
       "backgroundTextStyle": "light",
       "navigationBarBackgroundColor": "#FFFFFF",
-      "navigationBarTitleText": "课程详情",
+      "navigationBarTitleText": "智能校园助手",
       "navigationBarTextStyle": "black",
       "navigationStyle": "default",
       "enablePullDownRefresh": false
@@ -33,8 +43,8 @@
       "backgroundColor": "#FFFFFF",
       "borderStyle": "black",
       "position": "bottom",
-      "iconSize": 80,  
-      "height": 90,    
+      "iconSize": 32,
+      "height": 50,
       "list": [
         {
           "pagePath": "pages/index/index",
@@ -43,7 +53,7 @@
           "selectedIconPath": "/images/xuexi.png"
         },
         {
-          "pagePath": "pages/duihua/duihua",
+          "pagePath": "pages/student-chatlist/student-chatlist",
           "text": "对话",
           "iconPath": "/images/duihua.png",
           "selectedIconPath": "/images/duihua.png"
@@ -59,5 +69,16 @@
     "sitemapLocation": "sitemap.json",
     "style": "v2",
     "lazyCodeLoading": "requiredComponents",
-    "cloud": true
+    "cloud": true,
+    "permission": {
+      "scope.userLocation": {
+        "desc": "需要获取你的位置信息，用于提供校园导航、POI定位等服务"
+      }
+    },
+    "requiredBackgroundModes": [
+      "location"
+    ],
+    "requiredPrivateInfos": [
+      "getLocation"
+    ]
   }

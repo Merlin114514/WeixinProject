@@ -1,0 +1,58 @@
+<view class="container">
+  <view class="login-logo">
+    <image src="/images/hsq.png" class="logo-img"></image>
+    <view class="logo-text">师生交互聊天系统</view>
+  </view>
+
+  <!-- 身份选择：学生/老师 -->
+  <view class="role-select">
+    <view 
+      class="role-item {{activeRole === 'student' ? 'active' : ''}}"
+      bindtap="changeRole"
+      data-role="student"
+    >
+      学生
+    </view>
+    <view 
+      class="role-item {{activeRole === 'teacher' ? 'active' : ''}}"
+      bindtap="changeRole"
+      data-role="teacher"
+    >
+      老师
+    </view>
+  </view>
+
+  <!-- 账号输入框：学生=学号 / 老师=工号 -->
+  <view class="input-wrap">
+    <view class="input-label">{{activeRole === 'student' ? '学号' : '工号'}}</view>
+    <input 
+      class="input-content"
+      placeholder="请输入{{activeRole === 'student' ? '学号' : '工号'}}"
+      value="{{account}}"
+      bindinput="inputAccount"
+      type="text"
+    />
+  </view>
+
+  <!-- 密码输入框 -->
+  <view class="input-wrap">
+    <view class="input-label">密码</view>
+    <input 
+      class="input-content"
+      placeholder="请输入密码"
+      value="{{password}}"
+      bindinput="inputPassword"
+      type="password"
+    />
+  </view>
+
+  <!-- 登录按钮 -->
+  <button class="login-btn" bindtap="accountLogin" loading="{{loginLoading}}">
+    登录
+  </button>
+
+  <!-- 注册提示 -->
+  <view class="register-tip" bindtap="gotoRegister">
+    还未注册？点击前往注册
+  </view>
+</view>

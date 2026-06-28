@@ -1,0 +1,149 @@
+/* pages/ai-chat/ai-chat.wxss */
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa; /* 更柔和的背景色，护眼不刺眼 */
+    box-sizing: border-box;
+    padding-bottom: 20rpx;
+    /* 隐藏滚动条（可选，优化视觉） */
+    overflow: hidden;
+  }
+  
+  .chat-list {
+    flex: 1;
+    padding: 24rpx 20rpx; /* 微调内边距，布局更宽松 */
+    overflow-y: auto;
+    /* 隐藏滚动条，提升美观度 */
+    scrollbar-width: none;
+  }
+  
+  /* 兼容微信小程序隐藏滚动条 */
+  .chat-list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .msg-item {
+    display: flex;
+    margin-bottom: 24rpx; /* 调整间距，更规整 */
+    align-items: flex-start;
+  }
+  
+  .ai-msg {
+    justify-content: flex-start;
+  }
+  
+  .user-msg {
+    justify-content: flex-end;
+  }
+  
+  .avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin: 0 16rpx; /* 微调头像间距，更紧凑协调 */
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08); /* 轻微阴影，增加立体感 */
+    /* 防止头像变形 */
+    object-fit: cover;
+  }
+  
+  .msg-content {
+    max-width: 65%; /* 适当加宽消息宽度，减少文字换行 */
+    padding: 28rpx 32rpx; /* 增加内边距，文字更舒展 */
+    border-radius: 24rpx; /* 更大圆角，更柔和美观 */
+    font-size: 28rpx;
+    line-height: 1.6; /* 加大行高，提升阅读舒适度 */
+    word-break: break-all;
+    box-shadow: 0 3rpx 10rpx rgba(0, 0, 0, 0.06); /* 轻微阴影，增加层次感 */
+    position: relative;
+  }
+  
+  /* AI消息样式优化 */
+  .ai-msg .msg-content {
+    background-color: #ffffff; /* 纯白背景，清晰干净 */
+    color: #212529; /* 深灰色文字，更易阅读 */
+    /* AI消息左侧小三角（可选，增加气泡质感） */
+  }
+  .ai-msg .msg-content::before {
+    content: "";
+    position: absolute;
+    left: -12rpx;
+    top: 30rpx;
+    width: 0;
+    height: 0;
+    border-top: 12rpx solid transparent;
+    border-right: 12rpx solid #ffffff;
+    border-bottom: 12rpx solid transparent;
+  }
+  
+  /* 用户消息样式优化 */
+  .user-msg .msg-content {
+    background-color: #07c160; /* 保留原有绿色，微调更柔和 */
+    color: #ffffff;
+    /* 用户消息右侧小三角（可选，增加气泡质感） */
+  }
+  .user-msg .msg-content::after {
+    content: "";
+    position: absolute;
+    right: -12rpx;
+    top: 30rpx;
+    width: 0;
+    height: 0;
+    border-top: 12rpx solid transparent;
+    border-left: 12rpx solid #07c160;
+    border-bottom: 12rpx solid transparent;
+  }
+  
+  .input-area {
+    display: flex;
+    align-items: center;
+    padding: 16rpx 20rpx; /* 增加上下内边距，更宽松 */
+    gap: 20rpx;
+    background-color: #f8f9fa; /* 与容器背景一致，视觉统一 */
+    /* 底部轻微阴影，区分聊天区域和输入区域 */
+    box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.03);
+  }
+  
+  .input-box {
+    flex: 1;
+    height: 88rpx; /* 轻微加高输入框，输入更舒适 */
+    background-color: #ffffff;
+    border-radius: 44rpx; /* 与高度对应，保持圆形边角 */
+    padding: 0 32rpx; /* 加大左右内边距，文字不贴边 */
+    font-size: 28rpx;
+    /* 去除输入框默认边框 */
+    border: none;
+    outline: none;
+    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05); /* 轻微阴影，增加质感 */
+  }
+  
+  /* 优化输入框提示文字样式 */
+  .input-box::placeholder {
+    color: #adb5bd; /* 浅灰色提示文字，更柔和 */
+    font-size: 26rpx;
+  }
+  
+  .send-btn {
+    width: 160rpx;
+    height: 88rpx; /* 与输入框高度一致，视觉对齐 */
+    background-color: #07c160;
+    color: #ffffff;
+    border-radius: 44rpx; /* 与高度对应，保持圆形边角 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+    /* 去除button默认样式 */
+    border: none;
+    outline: none;
+    /* 点击反馈效果 */
+    transition: all 0.2s ease;
+  }
+  
+  /* 按钮点击态，增加交互反馈 */
+  .send-btn:active {
+    background-color: #06b056; /* 点击时深色变化，有反馈感 */
+    transform: scale(0.98); /* 轻微缩放，提升交互体验 */
+    box-shadow: 0 2rpx 6rpx rgba(7, 193, 96, 0.3);
+  }

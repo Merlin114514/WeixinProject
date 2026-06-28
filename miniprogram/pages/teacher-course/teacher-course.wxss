@@ -1,0 +1,158 @@
+/* 学生课表WXSS（student-course.wxss）- 含详情弹窗样式 */
+.page-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F5F7FA;
+    padding: 20rpx;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  .page-title {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30rpx;
+  }
+  
+  .week-scroll {
+    white-space: nowrap;
+    margin-bottom: 30rpx;
+    padding: 10rpx 0;
+  }
+  .week-item {
+    display: inline-block;
+    width: 100rpx;
+    text-align: center;
+    margin-right: 15rpx;
+  }
+  .week-name {
+    font-size: 28rpx;
+    color: #666;
+  }
+  .week-active .week-name {
+    color: #FFC53D;
+    font-weight: 500;
+  }
+  .week-dot {
+    width: 12rpx;
+    height: 12rpx;
+    border-radius: 50%;
+    background-color: #FFC53D;
+    margin: 8rpx auto 0;
+  }
+  
+  .schedule-container {
+    background-color: #FFF;
+    border-radius: 16rpx;
+    box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+  
+  .time-slot {
+    border-bottom: 1rpx solid #E5E7EB;
+  }
+  .slot-title {
+    height: 70rpx;
+    line-height: 70rpx;
+    padding: 0 25rpx;
+    background-color: #FFF3D8;
+  }
+  .slot-time {
+    font-size: 26rpx;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .course-card {
+    padding: 20rpx 25rpx;
+    cursor: pointer; /* 鼠标指针样式 */
+  }
+  .card-content {
+    padding: 15rpx;
+    background-color: #F8F9FA;
+    border-radius: 8rpx;
+  }
+  .course-name {
+    font-size: 28rpx;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 10rpx;
+    display: block;
+  }
+  .course-teacher, .course-classroom {
+    font-size: 24rpx;
+    color: #666;
+    line-height: 36rpx;
+    display: block;
+  }
+  
+  .no-course {
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 24rpx;
+  }
+  
+  /* 课程详情弹窗样式（新增） */
+  .detail-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 998;
+  }
+  .detail-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    background-color: #FFF;
+    border-radius: 16rpx;
+    z-index: 999;
+    overflow: hidden;
+  }
+  .detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx 30rpx;
+    border-bottom: 1rpx solid #E5E7EB;
+  }
+  .detail-title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #333;
+  }
+  .detail-close {
+    font-size: 40rpx;
+    color: #666;
+    width: 40rpx;
+    height: 40rpx;
+    text-align: center;
+    line-height: 40rpx;
+  }
+  .detail-content {
+    padding: 30rpx;
+  }
+  .detail-item {
+    display: flex;
+    margin-bottom: 20rpx;
+    align-items: center;
+  }
+  .detail-label {
+    font-size: 26rpx;
+    color: #666;
+    width: 160rpx;
+  }
+  .detail-value {
+    font-size: 26rpx;
+    color: #333;
+    flex: 1;
+  }

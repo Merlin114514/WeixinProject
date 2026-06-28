@@ -1,0 +1,94 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+    padding: 20rpx;
+    box-sizing: border-box;
+  }
+  
+  .page-title {
+    font-size: 32rpx;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 30rpx;
+    text-align: center;
+  }
+  
+  .classroom-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20rpx;
+  }
+  
+  .classroom-item {
+    background-color: #fff;
+    border-radius: 16rpx;
+    padding: 20rpx;
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+  }
+  
+  /* 状态标签样式 */
+  .status-tag {
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    padding: 8rpx 16rpx;
+    border-radius: 20rpx;
+    font-size: 24rpx;
+    color: #fff;
+  }
+  
+  .status-tag.idle {
+    background-color: #07c160;
+  }
+  
+  .status-tag.occupied {
+    background-color: #ff7800;
+  }
+  
+  .status-tag.maintain {
+    background-color: #999;
+  }
+  
+  .classroom-info {
+    flex: 1;
+  }
+  
+  .classroom-no {
+    font-size: 28rpx;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 10rpx;
+  }
+  
+  .classroom-attr {
+    display: flex;
+    gap: 30rpx;
+    font-size: 24rpx;
+    color: #666;
+    margin-bottom: 10rpx;
+  }
+  
+  .used-time {
+    font-size: 22rpx;
+    color: #999;
+  }
+  
+  .apply-btn {
+    padding: 15rpx 25rpx;
+    background-color: #07c160;
+    color: #fff;
+    border-radius: 8rpx;
+    font-size: 24rpx;
+    margin-left: 20rpx;
+  }
+  
+  .empty-tip {
+    font-size: 26rpx;
+    color: #999;
+    text-align: center;
+    margin-top: 100rpx;
+  }

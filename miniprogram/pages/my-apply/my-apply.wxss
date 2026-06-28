@@ -1,0 +1,92 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+    padding: 20rpx;
+    box-sizing: border-box;
+  }
+  
+  .page-title {
+    font-size: 32rpx;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 30rpx;
+    text-align: center;
+  }
+  
+  .apply-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20rpx;
+  }
+  
+  .apply-item {
+    background-color: #fff;
+    border-radius: 16rpx;
+    padding: 20rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+  }
+  
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15rpx;
+  }
+  
+  .classroom-no {
+    font-size: 28rpx;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .status {
+    padding: 8rpx 16rpx;
+    border-radius: 20rpx;
+    font-size: 24rpx;
+    color: #fff;
+  }
+  
+  .status.pending {
+    background-color: #ff7800;
+  }
+  
+  .status.approved {
+    background-color: #07c160;
+  }
+  
+  .status.rejected {
+    background-color: #f53f3f;
+  }
+  
+  .middle {
+    display: flex;
+    flex-direction: column;
+    gap: 10rpx;
+    margin-bottom: 15rpx;
+    padding-bottom: 15rpx;
+    border-bottom: 1rpx solid #e5e7eb;
+  }
+  
+  .middle text {
+    font-size: 24rpx;
+    color: #666;
+  }
+  
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10rpx;
+  }
+  
+  .bottom text {
+    font-size: 24rpx;
+    color: #666;
+  }
+  
+  .empty-tip {
+    font-size: 26rpx;
+    color: #999;
+    text-align: center;
+    margin-top: 100rpx;
+  }

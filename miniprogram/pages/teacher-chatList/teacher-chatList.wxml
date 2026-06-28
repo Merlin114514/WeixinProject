@@ -1,0 +1,27 @@
+<view class="chat-list-container">
+  <view class="page-title">学生好友列表</view>
+
+  <view class="chat-item" 
+        wx:for="{{chatList}}" 
+        wx:key="friendOpenid"
+        bindtap="gotoChat"
+        data-friendopenid="{{item.friendOpenid}}"
+        data-friendavatar="{{item.friendAvatar}}"
+        data-friendname="{{item.friendName}}">
+    <image class="avatar" src="{{item.friendAvatar || '/images/default-avatar.png'}}"></image>
+    <view class="chat-info">
+      <view class="top">
+        <text class="friend-name">{{item.friendName || '未知学生'}}</text>
+        <text class="msg-time">{{item.lastMsgTime}}</text>
+      </view>
+      <view class="bottom">
+        <text class="last-msg">{{item.lastMsgContent || '暂无消息'}}</text>
+        <view class="unread-badge" wx:if="{{item.unreadCount > 0}}">{{item.unreadCount}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{chatList.length === 0 && !isLoading}}">
+    <text class="empty-tip">暂无学生好友</text>
+  </view>
+</view>

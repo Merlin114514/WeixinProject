@@ -1,0 +1,101 @@
+/* 详情页容器 */
+.audit-detail-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+    padding: 20rpx;
+    box-sizing: border-box;
+  }
+  
+  /* 页面标题 */
+  .page-title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30rpx;
+    padding-bottom: 15rpx;
+    border-bottom: 1rpx solid #e5e7eb;
+  }
+  
+  /* 申请详情卡片 */
+  .apply-info {
+    background-color: #ffffff;
+    border-radius: 16rpx;
+    padding: 25rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+    margin-bottom: 30rpx;
+  }
+  
+  /* 详情行 */
+  .info-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20rpx;
+    font-size: 26rpx;
+  }
+  
+  /* 最后一行取消下边距 */
+  .info-row:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* 标签样式 */
+  .label {
+    width: 120rpx;
+    color: #666666;
+    flex-shrink: 0;
+    padding-top: 5rpx;
+  }
+  
+  /* 值样式 */
+  .value {
+    color: #333333;
+    flex: 1;
+    word-break: break-all; /* 自动换行，防止内容溢出 */
+  }
+  
+  /* 空状态样式 */
+  .empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400rpx;
+  }
+  
+  /* 空状态提示文字 */
+  .empty-tip {
+    font-size: 26rpx;
+    color: #999999;
+    text-align: center;
+  }
+  
+  /* 审核按钮组 */
+  .audit-btn-group {
+    display: flex;
+    gap: 20rpx;
+    width: 100%;
+  }
+  
+  /* 驳回按钮 */
+  .reject-btn {
+    flex: 1;
+    height: 88rpx;
+    line-height: 88rpx;
+    background-color: #f53f3f;
+    color: #ffffff;
+    border: none;
+    border-radius: 16rpx;
+    font-size: 28rpx;
+  }
+  
+  /* 同意按钮 */
+  .approve-btn {
+    flex: 1;
+    height: 88rpx;
+    line-height: 88rpx;
+    background-color: #07c160;
+    color: #ffffff;
+    border: none;
+    border-radius: 16rpx;
+    font-size: 28rpx;
+  }

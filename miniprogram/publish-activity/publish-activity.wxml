@@ -1,0 +1,127 @@
+<!-- publish-activity/publish-activity.wxml -->
+<view class="publish-container">
+  <form bindsubmit="formSubmit">
+    <!-- 活动标题 -->
+    <view class="form-item">
+      <label class="form-label">活动标题*</label>
+      <input name="title" placeholder="请输入活动标题（如：校园篮球友谊赛）" class="form-input" required></input>
+    </view>
+
+    <!-- 活动类型 -->
+    <view class="form-item">
+      <label class="form-label">活动类型*</label>
+      <picker 
+        mode="selector" 
+        name="type" 
+        class="form-picker" 
+        range="{{typeList}}" 
+        range-key="name" 
+        bindchange="onTypeChange"
+        value="{{typeIndex}}"
+      >
+        <view class="picker-content">
+          {{selectedType.name || '请选择活动类型'}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 开始时间：拆分日期+时间（低版本兼容） -->
+    <view class="form-item">
+      <label class="form-label">开始时间*</label>
+      <view class="time-split-group">
+        <!-- 开始日期（mode=date，稳定） -->
+        <picker 
+          mode="date" 
+          bindchange="onStartDateChange"
+          class="split-picker"
+        >
+          <view class="picker-content">
+            {{startDate || '选择日期（年月日）'}}
+          </view>
+        </picker>
+        <!-- 开始时间（mode=time，稳定） -->
+        <picker 
+          mode="time" 
+          bindchange="onStartTimePartChange"
+          class="split-picker"
+        >
+          <view class="picker-content">
+            {{startTimePart || '选择时间（时分）'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 结束时间：拆分日期+时间（低版本兼容） -->
+    <view class="form-item">
+      <label class="form-label">结束时间*</label>
+      <view class="time-split-group">
+        <!-- 结束日期（mode=date，稳定） -->
+        <picker 
+          mode="date" 
+          bindchange="onEndDateChange"
+          class="split-picker"
+        >
+          <view class="picker-content">
+            {{endDate || '选择日期（年月日）'}}
+          </view>
+        </picker>
+        <!-- 结束时间（mode=time，稳定） -->
+        <picker 
+          mode="time" 
+          bindchange="onEndTimePartChange"
+          class="split-picker"
+        >
+          <view class="picker-content">
+            {{endTimePart || '选择时间（时分）'}}
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <!-- 活动地点 -->
+    <view class="form-item">
+      <label class="form-label">活动地点*</label>
+      <input name="location" placeholder="请输入活动地点（如：学校篮球场）" class="form-input" required></input>
+    </view>
+
+    <!-- 活动简介 -->
+    <view class="form-item">
+      <label class="form-label">活动简介*</label>
+      <textarea 
+        name="desc" 
+        placeholder="请输入活动简介（可说明亮点、参与要求、流程等）" 
+        class="form-textarea" 
+        required
+      ></textarea>
+    </view>
+
+    <!-- 活动图片 -->
+    <view class="form-item">
+      <label class="form-label">活动图片</label>
+      <view class="upload-img" bindtap="uploadImage">
+        <image 
+          src="{{imageUrl || '/images/hsq.png'}}" 
+          class="upload-img-src" 
+          mode="aspectFit"
+        ></image>
+        <text class="upload-text">{{imageUrl ? '已上传，点击更换' : '点击上传图片'}}</text>
+      </view>
+    </view>
+
+    <!-- 最大名额 -->
+    <view class="form-item">
+      <label class="form-label">最大名额*</label>
+      <input 
+        name="maxCount" 
+        type="number" 
+        placeholder="请输入最大参与名额（如：50）" 
+        class="form-input" 
+        required
+      ></input>
+    </view>
+
+    <!-- 发布按钮 -->
+    <button form-type="submit" class="submit-btn">发布活动</button>
+  </form>
+</view>

@@ -1,0 +1,67 @@
+.audit-list-container {
+    width: 100%;
+    min-height: 100vh;
+    background: #f5f7fa;
+    padding: 20rpx;
+    box-sizing: border-box;
+  }
+  
+  .page-title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30rpx;
+    padding-bottom: 15rpx;
+    border-bottom: 1rpx solid #e5e7eb;
+  }
+  
+  .apply-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20rpx;
+  }
+  
+  .apply-item {
+    background: #fff;
+    border-radius: 16rpx;
+    padding: 25rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+  }
+  
+  .item-row {
+    display: flex;
+    margin-bottom: 15rpx;
+    font-size: 26rpx;
+  }
+  
+  .item-row:last-child {
+    margin-bottom: 0;
+  }
+  
+  .label {
+    width: 120rpx;
+    color: #666;
+    flex-shrink: 0;
+  }
+  
+  .value {
+    color: #333;
+    flex: 1;
+  }
+  
+  .status-pending {
+    color: #ff7800;
+    font-weight: 500;
+  }
+  
+  .empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400rpx;
+  }
+  
+  .empty-tip {
+    font-size: 26rpx;
+    color: #999;
+  }

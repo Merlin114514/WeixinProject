@@ -1,0 +1,52 @@
+<view class="container">
+  <!-- 页面标题 + 刷新按钮 -->
+  <view class="header">
+    <text class="title">添加申请</text>
+    <button class="refresh-btn" bindtap="getApplyList">
+      <image src="/images/hsq.png" class="refresh-icon"/>
+    </button>
+  </view>
+
+  <!-- 申请列表：高级卡片式（与JS字段完全匹配 + 关键优化） -->
+  <block wx:for="{{applyList}}" wx:key="{{item._id}}"> <!-- 修复wx:key格式，兼容小程序渲染规范 -->
+    <view class="apply-card">
+      <!-- 学生信息 + 申请时间（字段兜底，与JS的finalApplyList匹配） -->
+      <view class="card-header">
+        <view class="student-info">
+          <image 
+            src="{{item.fromInfo.avatarUrl || item.avatarUrl || '/images/hsq.png'}}" 
+            class="student-avatar"
+          />
+          <!-- 匹配JS中学生信息字段，兜底避免空值显示 -->
+          <view class="student-base">
+            <text class="student-name">{{item.fromInfo.username || '未知学生'}}</text>
+            <text class="student-id">学号：{{item.fromInfo.studentId || '未填写学号'}}</text>
+          </view>
+        </view>
+        <!-- 绑定JS格式化后的时间字段，兜底显示 -->
+        <text class="apply-time">{{item.formatTime || '暂无申请时间'}}</text>
+      </view>
+      <!-- 申请备注（绑定JS中的applyRemark字段，兜底显示） -->
+      <view class="card-body">
+        <text class="remark-label">申请备注：</text>
+        <text class="remark-content">{{item.applyRemark || '无备注'}}</text>
+      </view>
+      <!-- 操作按钮组（关键：完整传递applyId + fromOpenid，空值兜底） -->
+      <view class="card-footer">
+        <button class="agree-btn" bindtap="agreeApply" data-applyid="{{item._id}}" data-fromopenid="{{item.fromOpenid || ''}}">
+          同意添加
+        </button>
+        <button class="refuse-btn" bindtap="refuseApply" data-applyid="{{item._id}}">
+          拒绝添加
+        </button>
+      </view>
+    </view>
+  </block>
+
+  <!-- 无申请提示：高级样式（原有结构不变，与JS的applyList.length匹配） -->
+  <view class="no-apply" wx:if="{{applyList.length === 0}}">
+    <image src="/images/hsq.png" class="no-apply-icon"/>
+    <text class="no-apply-text">暂无新的添加申请</text>
+    <text class="no-apply-desc">学生发送申请后将显示在这里</text>
+  </view>
+</view>

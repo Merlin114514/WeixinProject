@@ -1,33 +1,50 @@
-<!-- 页面整体容器 -->
 <view class="page-container">
-<!-- 顶部用户信息区（改为蓝色背景+头像+微信用户样式） -->
-<view class="user-header">
-  <!-- 蓝色背景的用户信息容器 -->
-  <view class="user-info-wrap">
-    <!-- 头像 -->
-    <image class="avatar" src="/images/my.png" mode="widthFix"></image>
-    <!-- 微信用户文字 -->
-    <text class="wechat-text">微信用户</text>
-  </view>
-</view>
-  <!-- 学校选课模块 -->
-  <view class="course-card">
-    <text class="card-title">学校选课</text>
-    <view class="school-info">
-      <image class="school-logo" src="/images/xiaohui.png" mode="widthFix"></image>
-      <text class="school-name">广州软件学院</text>
-      <view class="course-count">
-        <text class="count-num">10</text>
-        <text class="count-label">共享课</text>
+  <view class="user-header">
+    <view class="user-info-wrap">
+      <view class="avatar-wrap" bindtap="chooseAvatar">
+        <image 
+          class="avatar" 
+          src="{{userInfo.avatarUrl || '/images/my.png'}}"
+          mode="aspectFill"
+        />
+        <view class="avatar-mask">更换头像</view>
       </view>
+      <text class="user-name">{{userInfo.username || userInfo.nickName || userInfo.name || userInfo.studentId || userInfo.teaId || '未设置昵称'}}</text>
+      <text class="user-role">当前身份：{{userInfo.role === 'student' ? '学生' : '教师'}}</text>
     </view>
   </view>
 
-  <!-- 功能按钮区 -->
   <view class="func-grid">
-    <view class="func-item" wx:for="{{funcList}}" wx:key="index">
-      <image class="func-icon" src="{{item.icon}}" mode="widthFix"></image>
-      <text class="func-name">{{item.name}}</text>
-    </view>
+    <block wx:if="{{userInfo.role === 'student'}}">
+      <view 
+        class="func-item" 
+        wx:for="{{studentFuncs}}" 
+        wx:key="name" 
+        bindtap="clickFunc" 
+        data-path="{{item.path}}"
+        data-name="{{item.name}}"
+      >
+        <image class="func-icon" src="{{item.icon}}" mode="widthFix" />
+        <text class="func-name">{{item.name}}</text>
+      </view>
+      <view class="func-item empty" wx:for="{{3 - (studentFuncs.length % 3)}}" wx:key="index" wx:if="{{studentFuncs.length % 3 !== 0}}"></view>
+    </block>
+
+    <block wx:if="{{userInfo.role === 'teacher'}}">
+      <view 
+        class="func-item" 
+        wx:for="{{teacherFuncs}}" 
+        wx:key="name" 
+        bindtap="clickFunc" 
+        data-path="{{item.path}}"
+        data-name="{{item.name}}"
+      >
+        <image class="func-icon" src="{{item.icon}}" mode="widthFix" />
+        <text class="func-name">{{item.name}}</text>
+      </view>
+      <view class="func-item empty" wx:for="{{3 - (teacherFuncs.length % 3)}}" wx:key="index" wx:if="{{teacherFuncs.length % 3 !== 0}}"></view>
+    </block>
   </view>
+
+  <button class="logout-btn" bindtap="logout">退出登录</button>
 </view>

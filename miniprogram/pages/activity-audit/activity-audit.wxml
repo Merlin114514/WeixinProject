@@ -1,0 +1,32 @@
+<!-- pages/activity-audit/activity-audit.wxml -->
+<view class="audit-container">
+  <view class="audit-list">
+    <block wx:for="{{auditActivities}}" wx:key="_id">
+      <view class="audit-card">
+        <view class="card-header">
+          <view class="card-title">{{item.activity.title}}</view>
+          <view class="card-meta">{{item.activity.typeName}} · {{item.activity.time}}</view>
+        </view>
+        <view class="card-body">
+          <view class="apply-count">待审核申请：{{item.applies.length}}人</view>
+          <view class="apply-list">
+            <block wx:for="{{item.applies}}" wx:key="_id">
+              <view class="apply-item">
+                <view class="apply-info">
+                  <view class="apply-username">学生ID：{{item.studentOpenid}}</view>
+                  <view class="apply-time">申请时间：{{item.applyTime}}</view>
+                </view>
+                <view class="apply-operation">
+                  <button class="agree-btn" bindtap="handleAudit" data-applyid="{{item._id}}" data-status="agree">同意</button>
+                  <button class="refuse-btn" bindtap="handleAudit" data-applyid="{{item._id}}" data-status="refuse">拒绝</button>
+                </view>
+              </view>
+            </block>
+            <view class="empty" wx:if="{{item.applies.length === 0}}">暂无待审核申请</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="empty" wx:if="{{auditActivities.length === 0}}">暂无需要审核的活动</view>
+  </view>
+</view>

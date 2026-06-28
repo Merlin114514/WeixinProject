@@ -1,0 +1,158 @@
+/* 页面基础样式 */
+.container {
+    padding: 20rpx 30rpx;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  /* 头部：标题 + 刷新按钮 */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30rpx;
+  }
+  .title {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #2d3748;
+  }
+  .refresh-btn {
+    width: 60rpx;
+    height: 60rpx;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+  }
+  .refresh-btn::after {
+    border: none;
+  }
+  .refresh-icon {
+    width: 36rpx;
+    height: 36rpx;
+  }
+  
+  /* 申请卡片：高级样式 */
+  .apply-card {
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 25rpx;
+    margin-bottom: 25rpx;
+    box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.06);
+  }
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20rpx;
+    padding-bottom: 20rpx;
+    border-bottom: 2rpx solid #f5f5f5;
+  }
+  .student-info {
+    display: flex;
+    align-items: center;
+    gap: 20rpx;
+  }
+  .student-avatar {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #f5f5f5;
+    flex-shrink: 0;
+  }
+  .student-base {
+    display: flex;
+    flex-direction: column;
+    gap: 8rpx;
+  }
+  .student-name {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #2d3748;
+  }
+  .student-id {
+    font-size: 26rpx;
+    color: #718096;
+  }
+  .apply-time {
+    font-size: 24rpx;
+    color: #999999;
+    white-space: nowrap;
+  }
+  .card-body {
+    margin-bottom: 25rpx;
+  }
+  .remark-label {
+    font-size: 28rpx;
+    color: #718096;
+    margin-right: 15rpx;
+  }
+  .remark-content {
+    font-size: 28rpx;
+    color: #2d3748;
+  }
+  .card-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20rpx;
+  }
+  .agree-btn {
+    width: 160rpx;
+    height: 76rpx;
+    line-height: 76rpx;
+    background: linear-gradient(90deg, #42b983, #52c499);
+    color: #fff;
+    border-radius: 38rpx;
+    font-size: 28rpx;
+    box-shadow: 0 4rpx 16rpx rgba(66, 185, 131, 0.2);
+  }
+  .agree-btn::after {
+    border: none;
+  }
+  .agree-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+  }
+  .refuse-btn {
+    width: 160rpx;
+    height: 76rpx;
+    line-height: 76rpx;
+    background: linear-gradient(90deg, #e53e3e, #f56565);
+    color: #fff;
+    border-radius: 38rpx;
+    font-size: 28rpx;
+    box-shadow: 0 4rpx 16rpx rgba(229, 62, 62, 0.2);
+  }
+  .refuse-btn::after {
+    border: none;
+  }
+  .refuse-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+  }
+  
+  /* 无申请提示 */
+  .no-apply {
+    text-align: center;
+    margin-top: 150rpx;
+  }
+  .no-apply-icon {
+    width: 220rpx;
+    height: 220rpx;
+    margin-bottom: 30rpx;
+    opacity: 0.6;
+  }
+  .no-apply-text {
+    font-size: 30rpx;
+    color: #2d3748;
+    margin-bottom: 15rpx;
+    display: block;
+  }
+  .no-apply-desc {
+    font-size: 26rpx;
+    color: #718096;
+  }

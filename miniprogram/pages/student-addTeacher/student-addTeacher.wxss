@@ -1,0 +1,259 @@
+/* 页面基础样式 */
+.container {
+    padding: 20rpx 30rpx;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  
+  /* 标题栏：带装饰线 */
+  .title-bar {
+    margin-bottom: 30rpx;
+  }
+  .title {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #2d3748;
+    position: relative;
+    padding-bottom: 15rpx;
+    display: block;
+  }
+  .title-line {
+    width: 60rpx;
+    height: 6rpx;
+    background: linear-gradient(90deg, #409eff, #69b1ff);
+    border-radius: 3rpx;
+  }
+  
+  /* 搜索表单：优化样式 */
+  .search-form {
+    display: flex;
+    gap: 20rpx;
+    align-items: center;
+    margin-bottom: 40rpx;
+  }
+  .search-input-wrap {
+    flex: 1;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    height: 88rpx;
+    background-color: #fff;
+    border-radius: 44rpx;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  }
+  .search-btn {
+    width: 180rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: linear-gradient(90deg, #409eff, #69b1ff);
+    color: #fff;
+    border-radius: 44rpx;
+    font-size: 28rpx;
+    box-shadow: 0 4rpx 16rpx rgba(64, 158, 255, 0.2);
+  }
+  .search-btn::after {
+    border: none;
+  }
+  .search-btn-text {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  /* 老师信息卡片：高级卡片式 */
+  .teacher-card {
+    background-color: #fff;
+    border-radius: 20rpx;
+    padding: 30rpx;
+    box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.06);
+    margin-bottom: 40rpx;
+  }
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 20rpx;
+    margin-bottom: 30rpx;
+  }
+  .teacher-avatar {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4rpx solid #f0f7ff;
+  }
+  .teacher-base-info {
+    display: flex;
+    align-items: center;
+    gap: 15rpx;
+  }
+  .teacher-name {
+    font-size: 34rpx;
+    font-weight: 600;
+    color: #2d3748;
+  }
+  .teacher-tag {
+    font-size: 22rpx;
+    color: #409eff;
+    background-color: #e6f7ff;
+    padding: 4rpx 16rpx;
+    border-radius: 30rpx;
+  }
+  .card-body {
+    margin-bottom: 30rpx;
+  }
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 15rpx;
+    margin-bottom: 20rpx;
+  }
+  .info-label {
+    font-size: 28rpx;
+    color: #718096;
+    width: 100rpx;
+    display: inline-block;
+  }
+  .info-value {
+    font-size: 28rpx;
+    color: #2d3748;
+    flex: 1;
+  }
+  .remark-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 15rpx;
+  }
+  .remark-input {
+    flex: 1;
+    height: 80rpx;
+    border: 2rpx solid #e2e8f0;
+    border-radius: 12rpx;
+    padding: 0 20rpx;
+    font-size: 26rpx;
+    box-sizing: border-box;
+  }
+  .remark-value {
+    flex: 1;
+    font-size: 28rpx;
+    color: #2d3748;
+    padding-top: 10rpx;
+  }
+  .card-footer {
+    display: flex;
+    justify-content: center;
+  }
+  .apply-btn {
+    width: 240rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: linear-gradient(90deg, #42b983, #52c499);
+    color: #fff;
+    border-radius: 44rpx;
+    font-size: 30rpx;
+    box-shadow: 0 4rpx 16rpx rgba(66, 185, 131, 0.2);
+  }
+  .apply-btn::after {
+    border: none;
+  }
+  .apply-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+  }
+  .applied-btn {
+    width: 240rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    background-color: #e2e8f0;
+    color: #718096;
+    border-radius: 44rpx;
+    font-size: 30rpx;
+  }
+  .applied-btn::after {
+    border: none;
+  }
+  .friend-btn {
+    width: 240rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    background-color: #f0f7ff;
+    color: #409eff;
+    border-radius: 44rpx;
+    font-size: 30rpx;
+    border: 2rpx solid #409eff;
+  }
+  .friend-btn::after {
+    border: none;
+  }
+  
+  /* 无结果提示 */
+  .no-result {
+    text-align: center;
+    margin-top: 100rpx;
+  }
+  .no-result-icon {
+    width: 200rpx;
+    height: 200rpx;
+    margin-bottom: 20rpx;
+    opacity: 0.6;
+  }
+  .no-result-text {
+    font-size: 28rpx;
+    color: #718096;
+    display: block;
+  }
+  
+  /* 所有老师列表：网格卡片 */
+  .teacher-list-section {
+    margin-top: 40rpx;
+  }
+  .section-title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 20rpx;
+    display: block;
+  }
+  .teacher-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24rpx;
+  }
+  .teacher-list-item {
+    width: calc((100% - 48rpx) / 3);
+    background-color: #fff;
+    border-radius: 16rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15rpx;
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  }
+  .teacher-list-item:hover {
+    transform: translateY(-5rpx);
+    box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+  }
+  .list-avatar {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .list-name {
+    font-size: 26rpx;
+    font-weight: 500;
+    color: #2d3748;
+    text-align: center;
+  }
+  .list-teaId {
+    font-size: 22rpx;
+    color: #718096;
+    text-align: center;
+  }

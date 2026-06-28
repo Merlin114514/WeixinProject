@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="page-title">我的教室申请</view>
+
+  <!-- 申请列表 -->
+  <view class="apply-list" wx:if="{{applyList.length > 0}}">
+    <view class="apply-item" wx:for="{{applyList}}" wx:key="_id">
+      <view class="top">
+        <view class="classroom-no">{{item.classroomNo}}</view>
+        <view class="status {{item.auditStatus}}">{{item.auditStatusText}}</view>
+      </view>
+      <view class="middle">
+        <text>使用时间：{{item.applyUseTime[0].startTime}}-{{item.applyUseTime[0].endTime}}</text>
+        <text>审核老师：{{item.teacherName}}</text>
+      </view>
+      <view class="bottom">
+        <text>申请用途：{{item.applyReason}}</text>
+        <text wx:if="{{item.auditRemark}}">审核备注：{{item.auditRemark}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空列表提示 -->
+  <view class="empty-tip" wx:else>暂无申请记录</view>
+</view>

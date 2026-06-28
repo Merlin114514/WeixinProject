@@ -1,2 +1,44 @@
-<!--pages/chat/chat.wxml-->
-<text>pages/chat/chat.wxml</text>
+<view class="chat-container">
+  <scroll-view 
+    class="msg-list" 
+    scroll-y 
+    scroll-into-view="{{scrollToView}}" 
+    scroll-with-animation
+    bindscrolltolower="loadMoreMsg"
+  >
+    <block wx:for="{{msgList}}" wx:key="_id" wx:for-index="index">
+      <!-- 对方消息（左）- 保持原有结构 -->
+      <view class="msg-item left" wx:if="{{item.fromOpenid === friendOpenid}}" id="{{'msg-'+index}}">
+        <image class="avatar" src="{{friendAvatar}}" mode="widthFix"></image>
+        <view class="msg-content">
+          <text class="msg-text">{{item.content}}</text>
+          <text class="msg-time">{{formatMsgTime(item.createTime)}}</text>
+        </view>
+      </view>
+
+      <!-- 自己消息（右）- 结构不变，仅靠样式调整为示例效果 -->
+      <view class="msg-item right" wx:else id="{{'msg-'+index}}">
+        <view class="msg-content">
+          <text class="msg-text">{{item.content}}</text>
+          <text class="msg-time">{{formatMsgTime(item.createTime)}}</text>
+        </view>
+        <image class="avatar" src="{{myAvatar}}" mode="widthFix"></image>
+      </view>
+    </block>
+    <view class="empty-msg" wx:if="{{msgList.length === 0}}">
+      暂无消息，开始聊天吧~
+    </view>
+  </scroll-view>
+
+  <view class="input-area">
+    <input 
+      class="msg-input" 
+      placeholder="请输入消息..." 
+      value="{{inputContent}}" 
+      bindinput="onInputChange"
+      bindblur="onInputChange"
+      type="text"
+    />
+    <button class="send-btn" bindtap="sendMsg" disabled="{{!inputContent}}">发送</button>
+  </view>
+</view>

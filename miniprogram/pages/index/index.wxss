@@ -166,15 +166,6 @@ page {
     flex-direction: column;
     gap: 20rpx;
   }
-  .course-img {
-    width: 100%;
-    height: 220rpx; 
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.3s ease;
-    aspect-ratio: 4 / 3;
-  }
-  
   .course-item {
     position: relative;
     background: #fff;
@@ -183,12 +174,36 @@ page {
     overflow: hidden;
     transition: all 0.3s ease;
     border: 1px solid #f8f8f8;
-    height: 500rpx;
+    /* 卡片总高度适配示例 */
+    height: 280rpx;
     display: flex;
     flex-direction: column;
   }
-  .course-item:hover .course-img {
-    transform: scale(1.02);
+  
+/* 调整课程封面图比例（更高） */
+.course-img {
+    width: 100%;
+    height: 220rpx; /* 从200rpx提高到220rpx，增加高度 */
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+    /* 调整宽高比为 4:3（更高，原4:2.5） */
+    aspect-ratio: 4 / 3;
+  }
+  
+  /* 同步调整课程卡片总高度（适配更高的封面） */
+  .course-item {
+    position: relative;
+    background: #fff;
+    border-radius: 20rpx;
+    box-shadow: 0 3rpx 12rpx rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid #f8f8f8;
+    /* 总高度从280rpx调整为300rpx，匹配更高的封面 */
+    height: 400rpx;
+    display: flex;
+    flex-direction: column;
   }
   
   .course-tag {

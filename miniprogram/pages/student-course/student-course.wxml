@@ -1,0 +1,92 @@
+<!-- 学生课表WXML（student-course.wxml）- 含课程详情弹窗 -->
+<view class="page-container">
+  <view class="page-title">我的课表</view>
+
+  <!-- 星期导航 -->
+  <scroll-view class="week-scroll" scroll-x scroll-with-animation show-scrollbar="{{false}}">
+    <view 
+      class="week-item {{currentWeek == item.week ? 'week-active' : ''}}"
+      wx:for="{{weekList}}" 
+      wx:key="week"
+      bindtap="switchWeek" 
+      data-week="{{item.week}}"
+    >
+      <view class="week-name">{{item.name}}</view>
+      <view class="week-dot" wx:if="{{currentWeek == item.week}}"></view>
+    </view>
+  </scroll-view>
+
+  <!-- 课表主体：遍历所有课程 -->
+  <view class="schedule-container">
+    <view class="time-slot" wx:for="{{periodCourses}}" wx:for-index="periodIdx" wx:key="periodIdx">
+      <!-- 时间段标题 -->
+      <view class="slot-title">
+        <text class="slot-time">{{periodList[periodIdx]}}</text>
+      </view>
+      
+      <!-- 显示当前时间段的课程（绑定点击事件） -->
+      <view 
+        class="course-card" 
+        wx:for="{{item}}" 
+        wx:for-item="course" 
+        wx:key="course._id"
+        bindtap="showCourseDetail"
+        data-course="{{course}}"
+      >
+        <view class="card-content">
+          <text class="course-name">{{course.course_name}}</text>
+          <text class="course-teacher">老师：{{course.tea_name}}</text>
+          <text class="course-classroom">教室：{{course.classroom}}</text>
+        </view>
+      </view>
+
+      <!-- 无课程提示 -->
+      <view class="no-course" wx:if="{{item.length === 0}}">
+        <text>无课程</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 课程详情弹窗（新增） -->
+  <view class="detail-mask" wx:if="{{showDetail}}" bindtap="closeDetail"></view>
+  <view class="detail-modal" wx:if="{{showDetail}}">
+    <view class="detail-header">
+      <text class="detail-title">课程详情</text>
+      <view class="detail-close" bindtap="closeDetail">×</view>
+    </view>
+    <view class="detail-content">
+      <view class="detail-item">
+        <text class="detail-label">课程名称：</text>
+        <text class="detail-value">{{currentCourse.course_name}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">授课老师：</text>
+        <text class="detail-value">{{currentCourse.tea_name}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">老师工号：</text>
+        <text class="detail-value">{{currentCourse.tea_id}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">授课星期：</text>
+        <text class="detail-value">{{weekList[currentCourse.week_day - 1].name}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">授课时间段：</text>
+        <text class="detail-value">{{currentCourse.class_period}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">上课教室：</text>
+        <text class="detail-value">{{currentCourse.classroom}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">所属学院：</text>
+        <text class="detail-value">{{currentCourse.college}}</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-label">创建时间：</text>
+        <text class="detail-value">{{currentCourse.create_time}}</text>
+      </view>
+    </view>
+  </view>
+</view>

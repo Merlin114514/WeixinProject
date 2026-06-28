@@ -1,0 +1,168 @@
+<view class="container">
+  <!-- 发布动态按钮 -->
+  <view class="publish-btn-wrap" bindtap="openPublishModal">
+    <button class="publish-btn">+ 发布动态</button>
+  </view>
+
+  <!-- 动态列表 -->
+  <view class="community-list" wx:if="{{dynamicList.length > 0}}">
+    <view class="dynamic-item" wx:for="{{dynamicList}}" wx:key="_id">
+      <!-- 发布者信息 -->
+      <view class="publisher-info">
+        <image class="avatar" src="{{item.avatar || '/images/avatar.png'}}"></image>
+        <view class="info-wrap">
+          <view class="nickname">{{item.nickname || '匿名用户'}}</view>
+          <view class="publish-time">{{item.publishTime || '刚刚'}}</view>
+        </view>
+      </view>
+
+      <!-- 动态内容 -->
+      <view class="dynamic-content">
+        <view class="content-text">{{item.content}}</view>
+        
+        <!-- 动态图片（多图展示） -->
+        <view class="content-images" wx:if="{{item.images && item.images.length > 0}}">
+          <image 
+            class="content-img" 
+            wx:for="{{item.images}}" 
+            wx:for-item="img" 
+            wx:key="index"
+            src="{{img}}"
+            mode="aspectFill"
+            bindtap="previewImage"
+            data-imglist="{{item.images}}"
+            data-current="{{img}}"
+          ></image>
+        </view>
+      </view>
+
+      <!-- 互动区域（点赞+评论） -->
+      <view class="dynamic-interact">
+        <!-- 点赞按钮 -->
+        <view class="like-btn" bindtap="toggleLike" data-id="{{item._id}}">
+          <icon 
+            type="success" 
+            size="18" 
+            color="{{item.isLiked ? '#e53935' : '#999'}}"
+          ></icon>
+          <text class="like-text {{item.isLiked ? 'liked' : ''}}">{{item.likeCount || 0}} 点赞</text>
+        </view>
+
+        <!-- 评论按钮：修复绑定位置+传递data-id -->
+        <view class="comment-btn" bindtap="openCommentModal" data-id="{{item._id}}">
+          <icon type="comment" size="18" color="#999"></icon>
+          <text class="comment-text">{{item.commentCount || 0}} 评论</text>
+        </view>
+      </view>
+
+      <view class="comment-list" wx:if="{{item.comments}}">
+        <view wx:if="{{item.comments.length === 0}}" class="comment-empty">
+            暂无评论，快来发布第一条吧～</view>
+        <view class="comment-item" wx:for="{{item.comments.slice(0)}}" wx:for-item="comment" wx:key="index">
+          <view class="comment-avatar">
+            <image src="{{comment.avatar || '/images/avatar.png'}}"></image>
+          </view>
+          <view class="comment-content">
+            <view class="comment-nickname">{{item.comment.nickname || '匿名用户'}}</view>
+            <view class="comment-text">{{comment.content || '空评论'}}</view>
+            <view class="comment-time">{{comment.commentTime || '刚刚'}}</view>
+          </view>
+        </view>
+        
+        <!-- 查看更多评论 -->
+        <view class="more-comment" wx:if="{{item.comments.length > 1}}" bindtap="openCommentModal" data-id="{{item._id}}">
+          查看全部 {{item.comments.length}} 条评论
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <view class="loading-icon">
+      <icon type="waiting" size="30" color="#1aad19"></icon>
+    </view>
+    <view class="loading-text">加载中...</view>
+  </view>
+
+  <!-- 原生发布动态弹窗 -->
+  <view class="modal-mask" wx:if="{{showPublishModal}}" bindtap="closePublishModal"></view>
+  <view class="modal-wrap" wx:if="{{showPublishModal}}">
+    <view class="modal-header">
+      <view class="modal-title">发布动态</view>
+      <view class="modal-close" bindtap="closePublishModal">×</view>
+    </view>
+    <view class="modal-content">
+      <textarea 
+        placeholder="分享你的活动心得、照片吧～" 
+        value="{{publishContent}}"
+        bindinput="onPublishContentInput"
+        class="publish-textarea"
+        maxlength="500"
+      ></textarea>
+      
+      <!-- 图片上传 -->
+      <view class="upload-wrap">
+        <view class="upload-title">上传图片（最多9张）</view>
+        <view class="upload-images">
+          <image 
+            class="upload-img" 
+            wx:for="{{uploadImages}}" 
+            wx:for-item="img" 
+            wx:key="index"
+            src="{{img}}"
+            bindtap="previewUploadImage"
+            data-imglist="{{uploadImages}}"
+            data-current="{{img}}"
+          ></image>
+          <view class="upload-btn" wx:if="{{uploadImages.length < 9}}" bindtap="chooseImage">
+            <icon type="image" size="24" color="#999"></icon>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="modal-footer">
+      <button class="modal-btn cancel-btn" bindtap="closePublishModal">取消</button>
+      <button class="modal-btn confirm-btn" bindtap="publishDynamic">发布</button>
+    </view>
+  </view>
+
+  <!-- 原生评论弹窗（新增评论列表展示） -->
+  <view class="modal-mask" wx:if="{{showCommentModal}}" bindtap="closeCommentModal"></view>
+  <view class="modal-wrap" wx:if="{{showCommentModal}}">
+    <view class="modal-header">
+      <view class="modal-title">评论</view>
+      <view class="modal-close" bindtap="closeCommentModal">×</view>
+    </view>
+    <!-- 已有评论列表 -->
+    <view class="modal-comment-list" wx:if="{{currentComments && currentComments.length > 0}}">
+      <view class="comment-item" wx:for="{{currentComments}}" wx:for-item="comment" wx:key="index">
+        <view class="comment-avatar">
+          <image src="{{comment.avatar || '/images/avatar.png'}}"></image>
+        </view>
+        <view class="comment-content">
+          <view class="comment-nickname">{{comment.nickname || '匿名用户'}}</view>
+          <view class="comment-text">{{comment.content}}</view>
+          <view class="comment-time">{{comment.commentTime || '刚刚'}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 空评论提示 -->
+    <view class="modal-comment-empty" wx:if="{{currentComments && currentComments.length === 0}}">
+      暂无评论，快来抢沙发～
+    </view>
+    <view class="modal-content">
+      <textarea 
+        placeholder="输入你的评论..." 
+        value="{{commentContent}}"
+        bindinput="onCommentContentInput"
+        class="comment-textarea"
+        maxlength="200"
+      ></textarea>
+    </view>
+    <view class="modal-footer">
+      <button class="modal-btn cancel-btn" bindtap="closeCommentModal">取消</button>
+      <button class="modal-btn confirm-btn" bindtap="sendComment">发送</button>
+    </view>
+  </view>
+</view>

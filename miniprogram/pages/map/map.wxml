@@ -1,0 +1,88 @@
+<!-- pages/poi-search/poi-search.wxml -->
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-wrap">
+      <icon type="search" size="16" color="#999"></icon>
+      <input 
+        type="text" 
+        placeholder="请输入地点名称/分类" 
+        value="{{searchValue}}"
+        bindinput="onSearchInput"
+        bindconfirm="onSearchConfirm"
+        class="search-input"
+      />
+      <text wx:if="{{searchValue}}" bindtap="clearSearch" class="clear-icon">×</text>
+    </view>
+    <button bindtap="onSearch" class="search-btn">搜索</button>
+  </view>
+
+  <!-- 分类筛选（云存储图片正常加载） -->
+  <scroll-view scroll-x class="category-scroll" wx:if="{{categoryList.length > 0}}">
+    <view class="category-wrap">
+      <view 
+        class="category-item {{activeCategory === item._id ? 'active' : ''}}"
+        wx:for="{{categoryList}}"
+        wx:key="_id"
+        bindtap="selectCategory"
+        data-id="{{item._id}}"
+      >
+        <!-- 分类图片（已处理临时链接+兜底） -->
+        <image 
+          class="category-img" 
+          src="{{item.image}}" 
+          mode="widthFix" 
+          binderror="onImageError"
+          data-index="{{index}}"
+          data-type="category"
+        />
+        <view class="category-name">{{item.name}}</view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 搜索结果 -->
+  <view class="result-wrap" wx:if="{{poiList.length > 0}}">
+    <view class="result-item" wx:for="{{poiList}}" wx:key="_id" bindtap="selectPoi" data-poi="{{item}}">
+      <view class="poi-icon">
+        <icon type="location" size="20" color="#1aad19"></icon>
+      </view>
+      <view class="poi-info">
+        <!-- POI图片（已处理临时链接+兜底） -->
+        <image 
+          class="poi-image" 
+          src="{{item.image}}" 
+          mode="aspectFill"
+          binderror="onImageError"
+          data-index="{{index}}"
+          data-type="poi"
+        />
+        <view class="poi-text-wrap">
+          <view class="poi-name">{{item.name}}</view>
+          <view class="poi-address">{{item.address || '暂无地址信息'}}</view>
+          <view class="poi-distance" wx:if="{{item.distance}}">{{item.distance}}m</view>
+        </view>
+      </view>
+      <icon type="chevronright" size="16" color="#ccc" class="arrow-icon"></icon>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-wrap" wx:if="{{!loading && poiList.length === 0 && (searchValue || activeCategory)}}">
+    <image src="/images/hsq.jpg" class="empty-img"></image>
+    <view class="empty-text">未找到相关地点</view>
+    <button bindtap="clearAll" class="reset-btn">重置搜索</button>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading-wrap" wx:if="{{loading}}">
+    <van-loading type="spinner" color="#1aad19" />
+    <view class="loading-text">正在搜索...</view>
+  </view>
+
+  <!-- 初始提示 -->
+  <view class="init-tips" wx:if="{{!loading && !searchValue && activeCategory === '' && poiList.length === 0}}">
+    <view class="tips-icon">📍</view>
+    <view class="tips-text">请输入地点名称或选择分类搜索</view>
+  </view>
+</view>

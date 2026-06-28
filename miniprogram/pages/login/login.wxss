@@ -1,0 +1,108 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 60rpx 40rpx;
+    box-sizing: border-box;
+    background-color: #f5f7fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .login-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 80rpx;
+  }
+  
+  .logo-img {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30rpx;
+  }
+  
+  .logo-text {
+    font-size: 36rpx;
+    font-weight: 600;
+    color: #2d3748;
+    letter-spacing: 2rpx;
+  }
+  
+  /* 身份选择样式 */
+  .role-select {
+    display: flex;
+    justify-content: center;
+    gap: 40rpx;
+    margin-bottom: 60rpx;
+    width: 100%;
+  }
+  
+  .role-item {
+    font-size: 32rpx;
+    color: #718096;
+    padding: 10rpx 30rpx;
+    border-radius: 30rpx;
+    transition: all 0.3s ease;
+  }
+  
+  .role-item.active {
+    color: #409eff;
+    font-weight: 600;
+    background-color: #e6f7ff;
+  }
+  
+  /* 输入框样式 */
+  .input-wrap {
+    width: 100%;
+    margin-bottom: 40rpx;
+    display: flex;
+    flex-direction: column;
+    gap: 10rpx;
+  }
+  
+  .input-label {
+    font-size: 28rpx;
+    color: #2d3748;
+    font-weight: 500;
+  }
+  
+  .input-content {
+    width: 100%;
+    height: 80rpx;
+    background-color: #fff;
+    border-radius: 16rpx;
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    font-size: 28rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+  }
+  
+  /* 登录按钮样式 */
+  .login-btn {
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;
+    background-color: #409eff;
+    color: #fff;
+    font-size: 32rpx;
+    border-radius: 45rpx;
+    margin-bottom: 60rpx;
+    box-shadow: 0 4rpx 16rpx rgba(64,158,255,0.3);
+  }
+  
+  .login-btn::after {
+    border: none;
+  }
+  
+  /* 注册提示样式 */
+  .register-tip {
+    font-size: 28rpx;
+    color: #4299e1;
+  }
+  
+  .register-tip:active {
+    color: #38b2ac;
+  }

@@ -1,0 +1,98 @@
+<view class="container">
+  <!-- 页面标题 + 装饰线 -->
+  <view class="title-bar">
+    <text class="title">添加老师</text>
+    <view class="title-line"></view>
+  </view>
+
+  <!-- 搜索表单：优化样式，更精致 -->
+  <form bindsubmit="searchTeacher" class="search-form">
+    <view class="search-input-wrap">
+      <input 
+        name="teaId" 
+        placeholder="请输入老师工号" 
+        class="search-input" 
+        value="{{searchTeaId}}"
+        bindinput="inputTeaId"
+        required
+      />
+    </view>
+    <button form-type="submit" class="search-btn">
+      <text class="search-btn-text">搜索老师</text>
+    </button>
+  </form>
+
+  <!-- 老师信息卡片：高级卡片式设计 -->
+  <view class="teacher-card" wx:if="{{teacherInfo}}">
+    <view class="card-header">
+      <image src="{{teacherInfo.avatarUrl || '/images/my.png'}}" class="teacher-avatar"/>
+      <view class="teacher-base-info">
+        <text class="teacher-name">{{teacherInfo.username}}</text>
+        <text class="teacher-tag">教师</text>
+      </view>
+    </view>
+    <view class="card-body">
+      <view class="info-row">
+        <text class="info-label">工号：</text>
+        <text class="info-value">{{teacherInfo.teaId}}</text>
+      </view>
+      <view class="info-row">
+        <text class="info-label">学院：</text>
+        <text class="info-value">{{teacherInfo.college || '未填写'}}</text>
+      </view>
+      <view class="remark-wrap">
+        <text class="info-label">申请备注：</text>
+        <input 
+          class="remark-input" 
+          placeholder="可选：添加备注信息" 
+          bindinput="inputRemark"
+          value="{{inputRemark}}"
+          wx:if="{{friendStatus !== 'friend'}}"
+        />
+        <text class="remark-value" wx:else>{{inputRemark || '无备注'}}</text>
+      </view>
+    </view>
+    <view class="card-footer">
+      <!-- 状态区分按钮 -->
+      <button class="apply-btn" bindtap="sendApply" wx:if="{{friendStatus === 'none' || friendStatus === 'refuse'}}">
+        发送添加申请
+      </button>
+      <button class="applied-btn" disabled wx:if="{{friendStatus === 'pending'}}">
+        已发送申请，等待审核
+      </button>
+      <button class="friend-btn" disabled wx:if="{{friendStatus === 'friend'}}">
+        已成为好友
+      </button>
+    </view>
+  </view>
+
+  <!-- 无结果提示：优化样式 -->
+  <view class="no-result" wx:if="{{showNoResult && !teacherInfo}}">
+    <image src="/images/hsq.png" class="no-result-icon"/>
+    <text class="no-result-text">未找到该工号对应的老师</text>
+  </view>
+
+  <!-- 所有老师列表：网格卡片式 -->
+  <view class="teacher-list-section" wx:if="{{teacherList.length > 0}}">
+    <text class="section-title">所有老师</text>
+    <view class="teacher-list">
+      <!-- 补充传递老师OpenID（注释移到标签外部，解决编译错误） -->
+      <view 
+        class="teacher-list-item" 
+        wx:for="{{teacherList}}" 
+        wx:key="_id"
+        bindtap="selectTeacher"
+        data-teacherid="{{item._id}}"
+        data-teachername="{{item.username}}"
+        data-teaid="{{item.teaId}}"
+        data-avatarurl="{{item.avatarUrl}}"
+        data-college="{{item.college}}"
+        data-openid="{{item._openid}}"
+      >
+        <image src="{{item.avatarUrl || '/images/my.png'}}" class="list-avatar"/>
+        <text class="list-name">{{item.username}}</text>
+        <text class="list-teaId">{{item.teaId}}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<view class="audit-list-container">
+  <view class="page-title">教室申请审核</view>
+
+  <!-- 申请列表：匹配你的数据库字段 -->
+  <view class="apply-list" wx:if="{{auditList.length > 0}}">
+    <view class="apply-item" 
+          wx:for="{{auditList}}" 
+          wx:key="_id" 
+          bindtap="gotoAuditDetail" 
+          data-apply-id="{{item._id}}"> <!-- 绑定你数据库的_id -->
+      <view class="item-row">
+        <text class="label">申请人：</text>
+        <text class="value">{{item.studentName || '未知'}}</text> <!-- 你的字段：studentName -->
+      </view>
+      <view class="item-row">
+        <text class="label">申请教室：</text>
+        <text class="value">{{item.classroomNo || '未知'}}</text> <!-- 你的字段：classroomNo -->
+      </view>
+      <view class="item-row">
+        <text class="label">申请人数：</text>
+        <text class="value">{{item.applyPersonCount || '0人'}}</text> <!-- 你的字段：applyPersonCount -->
+      </view>
+      <view class="item-row">
+        <text class="label">状态：</text>
+        <text class="value status-pending">{{item.auditStatus === 'pending' ? '待审核' : '已处理'}}</text> <!-- 你的字段：auditStatus -->
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:else>
+    <text class="empty-tip">暂无待审核申请</text>
+  </view>
+</view>

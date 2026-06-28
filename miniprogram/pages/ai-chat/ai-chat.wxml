@@ -1,0 +1,29 @@
+<view class="container">
+  <!-- 聊天列表容器：确保滚动和样式承载 -->
+  <view id="chat-container" class="chat-list">
+    <block wx:for="{{chatList}}" wx:key="index">
+      <!-- AI消息：类名与WXSS完全对应，补充图片渲染模式防止变形 -->
+      <view class="msg-item ai-msg" wx:if="{{item.role === 'ai'}}">
+        <image class="avatar" src="/images/ai-chat.png" mode="aspectFill" />
+        <view class="msg-content">{{item.content}}</view>
+      </view>
+      <!-- 用户消息：保留原有数据绑定和布局，补充图片渲染模式 -->
+      <view class="msg-item user-msg" wx:else>
+        <view class="msg-content">{{item.content}}</view>
+        <image class="avatar" src="{{userAvatar}}" mode="aspectFill" />
+      </view>
+    </block>
+  </view>
+
+  <!-- 输入框区域：保留原有输入和发送功能，结构不变 -->
+  <view class="input-area">
+    <input 
+      class="input-box" 
+      placeholder="请输入你的问题" 
+      value="{{inputValue}}"
+      bindinput="onInputChange"
+      type="text"
+    />
+    <button class="send-btn" bindtap="sendMsg" plain="{{false}}">发送</button>
+  </view>
+</view>

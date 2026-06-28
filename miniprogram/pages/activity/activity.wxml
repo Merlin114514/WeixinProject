@@ -1,0 +1,36 @@
+<!-- pages/activity/activity.wxml -->
+<view class="container">
+  <!-- 分类标签 -->
+  <scroll-view scroll-x class="tab-scroll">
+    <view class="tab-item {{currentTab === index ? 'active' : ''}}" wx:for="{{tabs}}" wx:key="index" bindtap="switchTab" data-index="{{index}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+
+  <!-- 新活动提醒 -->
+  <view class="new-notice" wx:if="{{newActivity.length > 0}}">
+    <image src="/images/hsq.png" class="notice-icon" mode="aspectFit"></image>
+    <text class="notice-text">新活动提醒（{{newActivity.length}}个）</text>
+  </view>
+
+  <!-- 活动列表 -->
+  <view class="activity-list">
+    <block wx:for="{{filterActivities}}" wx:key="_id">
+      <view class="activity-card" bindtap="goToDetail" data-id="{{item._id}}">
+        <image src="{{item.image || '/hsq.png'}}" class="activity-img" mode="widthFix"></image>
+        <view class="activity-info">
+          <view class="activity-title">{{item.title || '暂无标题'}}</view>
+          <view class="activity-meta">
+            <text class="meta-item">{{item.typeName || '未知类型'}}</text>
+            <text class="meta-item">{{item.time || '暂无时间'}}</text>
+          </view>
+          <view class="activity-location">📍 {{item.location || '暂无地点'}}</view>
+          <view class="activity-count">已报名{{item.registerCount || 0}}/{{item.maxCount || 0}}人</view>
+          <view class="activity-status status-end" wx:if="{{item.isEnd}}">已结束</view>
+          <view class="activity-status status-full" wx:elif="{{item.registerCount >= item.maxCount}}">名额已满</view>
+        </view>
+      </view>
+    </block>
+    <view class="empty" wx:if="{{filterActivities.length === 0}}">暂无相关活动~</view>
+  </view>
+</view>

@@ -1,170 +1,183 @@
-/* 全局样式重置 & 基础配置 */
 page {
-  background-color: #f8f9fa;
-  font-size: 28rpx;
-}
-
-/* 顶部用户信息区（核心：放大头像） */
-.user-header {
-  margin-bottom: 30rpx;
-  width: 100%;
-}
-.user-info-wrap {
-  background-color: #2f80ed;
-  width: 100%;
-  padding: 50rpx 0; /* 同步增加上下内边距，适配大头像 */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12rpx;
-  box-shadow: 0 2rpx 10rpx rgba(47, 128, 237, 0.1);
-}
-/* 头像放大+比例优化 */
-.avatar {
-  width: 120rpx;    /* 大幅放大头像 */
-  height: 120rpx;   
-  border-radius: 50%; 
-  background-color: #fff; 
-  padding: 10rpx;   
-  border: 4rpx solid #ffffff;
-  overflow: hidden;
-  margin-bottom: 15rpx; /* 增加头像和文字间距 */
-}
-.wechat-text {
-  color: #fff;
-  font-size: 32rpx; /* 同步放大文字，适配大头像 */
-  font-weight: 500;
-  letter-spacing: 1rpx; /* 增加字间距，提升舒适度 */
-}
-
-/* 学校选课卡片 */
-.course-card {
-    background-color: #fff;
-    border-radius: 16rpx;
-    padding: 20rpx 25rpx;
-    margin-bottom: 20rpx;
-    box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+    background-color: #f5f7fa;
+    font-size: 28rpx;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  
+  .page-container {
+    padding: 0 20rpx;
+    box-sizing: border-box;
+  }
+  
+  /* 顶部用户信息区 */
+  .user-header {
+    margin: 30rpx 0;
     width: 100%;
-    box-sizing: border-box; /* 关键：防止内边距导致溢出 */
   }
-  
-  /* 标题样式 */
-  .course-card .card-title {
-    font-size: 36rpx;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 20rpx;
-  }
-  
-  /* 内容行容器：核心布局控制 */
-  .school-info {
-    display: flex;
-    align-items: center;
-    height: 80rpx;
-    gap: 15rpx; /* 校徽/校名/数字区域的统一间距，避免挤在一起 */
-  }
-  
-  /* 校徽容器 */
-  .school-logo-wrap {
-    display: flex;
-    align-items: center;
-    position: relative;
-    flex-shrink: 0; /* 禁止校徽区域被压缩 */
-  }
-  /* 校徽大小控制 */
-  .school-info .school-logo {
-    width: 100rpx;  
-    height: 120rpx;
-    border-radius: 8rpx;
-    object-fit: contain;
-    flex-shrink: 0; /* 禁止校徽被压缩 */
-  }
-  /* 绿色对勾（可选） */
-  .school-logo-check {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 22rpx;
-    height: 22rpx;
-    background-color: #07c160;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 16rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* 校名样式：限制宽度，避免挤压数字 */
-  .school-info .school-name {
-    font-size: 34rpx;
-    color: #333;
-    flex-shrink: 1; /* 允许校名适度压缩 */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 200rpx; /* 固定最大宽度，给数字区域留空间 */
-  }
-  
-  /* 数字+共享课容器：靠近左侧，不溢出 */
-  .course-count {
+  .user-info-wrap {
+    background: linear-gradient(135deg, #409eff, #67c23a);
+    width: 100%;
+    padding: 60rpx 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    flex-grow: 0; /* 禁止数字区域占满剩余空间 */
-    flex-shrink: 0; /* 禁止数字区域被压缩 */
-    margin-left: auto; /* 保证数字区域在右侧，但gap会拉近距离 */
+    align-items: center;
+    justify-content: center;
+    border-radius: 24rpx;
+    box-shadow: 0 8rpx 24rpx rgba(64, 158, 255, 0.2);
+    position: relative;
+    overflow: hidden;
   }
-  .course-count .count-num {
-    font-size: 48rpx;
-    font-weight: 700;
-    color: #333;
-    line-height: 1;
+  .user-info-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    opacity: 0.5;
+    z-index: 0;
   }
-  .course-count .count-label {
+  .avatar-wrap {
+    position: relative;
+    margin-bottom: 20rpx;
+    z-index: 1;
+  }
+  .avatar {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+    background-color: #fff;
+    object-fit: cover;
+    border: 4rpx solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+  }
+  .avatar-mask {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40rpx;
+    line-height: 40rpx;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 22rpx;
+    text-align: center;
+    border-bottom-left-radius: 70rpx;
+    border-bottom-right-radius: 70rpx;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  /* ✅ 适配真机触摸 */
+  .avatar-wrap:active .avatar-mask,
+  .avatar-wrap:hover .avatar-mask {
+    opacity: 1;
+  }
+  .user-name {
+    color: #fff;
+    font-size: 36rpx;
+    font-weight: 600;
+    margin-bottom: 8rpx;
+    text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    position: relative;
+  }
+  .user-role {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 28rpx;
+    z-index: 1;
+    position: relative;
+  }
+  
+  /* 功能网格 */
+  .func-grid {
+    background: #fff;
+    border-radius: 24rpx;
+    padding: 40rpx 20rpx;
+    margin-bottom: 30rpx;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+    gap: 20rpx;
+  }
+  .func-item {
+    width: calc(33.33% - 14rpx);
+    height: 180rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16rpx;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .func-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #409eff, #67c23a);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+  .func-item:active {
+    transform: translateY(-4rpx) scale(0.98);
+    box-shadow: 0 8rpx 16rpx rgba(64, 158, 255, 0.2);
+  }
+  .func-item:active::before {
+    opacity: 0.05;
+  }
+  .func-item.empty {
+    background: transparent;
+    box-shadow: none;
+  }
+  .func-item.empty:active {
+    transform: none;
+    box-shadow: none;
+  }
+  .func-icon {
+    width: 80rpx;
+    height: 80rpx;
+    margin-bottom: 16rpx;
+    object-fit: contain;
+    z-index: 1;
+  }
+  .func-name {
     font-size: 26rpx;
-    color: #999;
-    margin-top: 4rpx;
-    line-height: 1;
+    color: #333;
+    text-align: center;
+    font-weight: 500;
+    z-index: 1;
   }
-/* 功能按钮网格（核心修改：按钮宽高一致） */
-.func-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  background-color: #fff;
-  border-radius: 20rpx;
-  padding: 35rpx 20rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
-  margin-bottom: 100rpx;
-}
-
-/* 功能按钮项：宽高一致，居中对齐 */
-.func-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30rpx;
-  width: calc(33.33% - 10rpx); /* 3列均分 */
-  height: 120rpx; /* 固定高度，和宽度比例协调 */
-  padding: 10rpx 0;
-}
-
-/* 功能图标：强制宽高一致 */
-.func-icon {
-  width: 60rpx;  
-  height: 60rpx; /* 宽高完全一致 */
-  margin-bottom: 12rpx;
-  /* 保证图标内容比例正常，不拉伸 */
-  object-fit: contain;
-}
-
-.func-name {
-  font-size: 26rpx;
-  color: #333;
-  /* 文字居中，防止溢出 */
-  text-align: center;
-  white-space: nowrap;
-}
+  .func-item:active .func-name {
+    color: #409eff;
+  }
+  
+  /* 退出登录按钮 */
+  .logout-btn {
+    width: 100%;
+    background: #fff;
+    color: #f56c6c;
+    border: 1rpx solid #f56c6c;
+    border-radius: 16rpx;
+    padding: 16rpx 0;
+    font-size: 30rpx;
+    margin-bottom: 50rpx;
+    transition: all 0.3s ease;
+    box-shadow: 0 2rpx 10rpx rgba(245, 108, 108, 0.1);
+  }
+  .logout-btn::after {
+    border: none;
+  }
+  .logout-btn:active {
+    background: #fef2f2;
+    transform: scale(0.98);
+    box-shadow: 0 4rpx 16rpx rgba(245, 108, 108, 0.2);
+  }

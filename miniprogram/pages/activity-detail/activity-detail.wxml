@@ -1,0 +1,31 @@
+<!-- pages/activity-detail/activity-detail.wxml -->
+<scroll-view class="detail-scroll" scroll-y>
+  <image src="{{activity.image || '/images/hsq.png'}}" class="detail-img" mode="widthFix"></image>
+  <view class="detail-container">
+    <view class="detail-title">{{activity.title || '暂无活动标题'}}</view>
+    <view class="detail-tag">
+      <view class="tag-item">{{activity.typeName || '未知类型'}}</view>
+      <view class="tag-item">{{activity.time || '暂无时间信息'}}</view>
+    </view>
+    <view class="detail-location">
+      <image src="/images/hsq.png" class="location-icon" mode="aspectFit"></image>
+      <text>{{activity.location || '暂无活动地点'}}</text>
+    </view>
+    <view class="detail-desc">
+      <view class="desc-title">活动简介</view>
+      <view class="desc-content">{{activity.desc || '暂无活动简介'}}</view>
+    </view>
+    <view class="detail-count">
+      已报名{{activity.registerCount || 0}}/{{activity.maxCount || 0}}人
+      <text wx:if="{{activity.isEnd}}" class="status-end">（已结束）</text>
+      <text wx:elif="{{(activity.registerCount || 0) >= (activity.maxCount || 0) && activity.maxCount !== 0}}" class="status-full">（名额已满）</text>
+    </view>
+  </view>
+</scroll-view>
+
+<view class="btn-container" wx:if="{{!activity.isEnd && (activity.registerCount || 0) < (activity.maxCount || 0) && activity.maxCount !== 0}}">
+  <button class="apply-btn" bindtap="submitApply">立即报名</button>
+</view>
+<view class="btn-container" wx:else>
+  <button class="disabled-btn" disabled>无法报名</button>
+</view>

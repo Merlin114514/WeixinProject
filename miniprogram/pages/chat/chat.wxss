@@ -1,1 +1,112 @@
-/* pages/chat/chat.wxss */
+.chat-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff; /* 匹配示例的纯白背景 */
+  }
+  
+  /* 消息列表 */
+  .msg-list {
+    flex: 1;
+    padding: 20rpx 16rpx;
+    box-sizing: border-box;
+  }
+  
+  /* 消息项通用样式 */
+  .msg-item {
+    display: flex;
+    margin-bottom: 16rpx; /* 缩小消息间距，匹配示例紧凑感 */
+    align-items: flex-end;
+  }
+  
+  /* 对方消息（左）- 保持原有（示例未展示对方消息，暂不调整） */
+  .msg-item.left {
+    flex-direction: row;
+  }
+  
+  /* 自己消息（右）- 调整为示例样式：右对齐 + 头像在气泡右侧 */
+  .msg-item.right {
+    flex-direction: row;
+    justify-content: flex-end; /* 让消息项整体右对齐 */
+  }
+  
+  /* 头像：匹配示例尺寸 + 位置 */
+  .avatar {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    margin-left: 12rpx; /* 自己消息的头像在气泡右侧，仅加左间距 */
+  }
+  
+  /* 消息内容容器：调整宽度 + 对齐方式 */
+  .msg-content {
+    max-width: 70%;
+  }
+  
+  /* 自己消息的内容容器 - 文字右对齐 */
+  .msg-item.right .msg-content {
+    text-align: right;
+  }
+  
+  /* 消息文本：匹配示例的浅绿色气泡 */
+  .msg-text {
+    display: inline-block;
+    padding: 18rpx 22rpx; /* 调整内边距，匹配示例气泡大小 */
+    border-radius: 18rpx; /* 圆润边角，匹配示例 */
+    font-size: 28rpx;
+    line-height: 1.5;
+    word-wrap: break-word;
+    background-color: #d9fdd3; /* 示例同款浅绿色背景 */
+    color: #333333; /* 深色文字，提升可读性 */
+  }
+  
+  /* 隐藏时间（示例图中无时间显示） */
+  .msg-time {
+    display: none;
+  }
+  
+  /* 空消息提示 - 保持原有 */
+  .empty-msg {
+    text-align: center;
+    color: #999999;
+    font-size: 28rpx;
+    margin-top: 200rpx;
+  }
+  
+  /* 输入区域 - 保持原有功能，样式不变 */
+  .input-area {
+    display: flex;
+    padding: 16rpx 20rpx;
+    background-color: #f8f8f8;
+    border-top: 1rpx solid #eee;
+  }
+  
+  /* 输入框 - 保持原有 */
+  .msg-input {
+    flex: 1;
+    height: 72rpx;
+    padding: 0 24rpx;
+    background-color: #ffffff;
+    border-radius: 36rpx;
+    font-size: 28rpx;
+    border: 1rpx solid #eee;
+  }
+  
+  /* 发送按钮 - 保持原有 */
+  .send-btn {
+    width: 130rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    text-align: center;
+    background-color: #07c160;
+    color: #fff;
+    border-radius: 36rpx;
+    margin-left: 16rpx;
+    font-size: 28rpx;
+    font-weight: 500;
+  }
+  
+  .send-btn[disabled] {
+    background-color: #ccc;
+    color: #fff;
+  }

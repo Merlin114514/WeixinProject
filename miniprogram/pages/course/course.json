@@ -1,5 +1,4 @@
 {
-    "usingComponents": {
-      "ec-canvas": "../../components/ec-canvas"
-    }
+    "usingComponents": {},
+    "navigationBarTitleText": "我的课表"
   }

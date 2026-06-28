@@ -1,0 +1,62 @@
+<view class="container">
+  <!-- 教室信息 -->
+  <view class="classroom-wrap">
+    <view class="title">申请教室</view>
+    <view class="content">{{classroom.classroomNo}}（{{classroom.location}}，{{classroom.capacity}}人）</view>
+  </view>
+
+  <!-- 学生信息（自动填充） -->
+  <view class="student-wrap">
+    <view class="title">申请人信息</view>
+    <view class="form-item">
+      <text class="label">学号：</text>
+      <text class="value">{{studentInfo.studentId}}</text>
+    </view>
+    <view class="form-item">
+      <text class="label">姓名：</text>
+      <text class="value">{{studentInfo.username}}</text>
+    </view>
+  </view>
+
+  <!-- 补充申请信息（独立日期选择） -->
+  <view class="form-wrap">
+    <view class="form-item">
+      <text class="label">联系电话：</text>
+      <input class="input" placeholder="请输入手机号" bindinput="onInputPhone" value="{{studentPhone}}" />
+    </view>
+
+    <!-- 申请人数 -->
+    <view class="form-item">
+      <text class="label">申请人数：</text>
+      <input class="input" type="number" placeholder="请输入申请使用人数" bindinput="onInputPersonCount" value="{{applyPersonCount}}" />
+    </view>
+
+    <view class="form-item">
+      <text class="label">使用时间段：</text>
+      <!-- 开始日期 -->
+      <picker mode="date" bindchange="onStartDateChange" value="{{startDate}}">
+        <view class="picker">开始日期：{{startDate || '请选择'}}</view>
+      </picker>
+      <!-- 结束日期 -->
+      <picker mode="date" bindchange="onEndDateChange" value="{{endDate}}">
+        <view class="picker">结束日期：{{endDate || '请选择'}}</view>
+      </picker>
+      <!-- 开始时间 -->
+      <picker mode="time" bindchange="onStartTimeChange" value="{{startTime}}">
+        <view class="picker">开始时间：{{startTime || '请选择'}}</view>
+      </picker>
+      <!-- 结束时间 -->
+      <picker mode="time" bindchange="onEndTimeChange" value="{{endTime}}">
+        <view class="picker">结束时间：{{endTime || '请选择'}}</view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="label">申请用途：</text>
+      <textarea class="textarea" placeholder="请详细说明用途" bindinput="onInputReason" value="{{applyReason}}" />
+    </view>
+  </view>
+
+  <!-- 提交按钮 -->
+  <button class="submit-btn" bindtap="submitApply">提交申请</button>
+</view>

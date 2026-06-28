@@ -1,0 +1,52 @@
+<view class="audit-detail-container">
+  <view class="page-title">申请详情</view>
+
+  <!-- 申请详情：用hasData判断，兼容低版本基础库 -->
+  <view class="apply-info" wx:if="{{hasData}}">
+    <view class="info-row">
+      <text class="label">学号：</text>
+      <text class="value">{{applyDetail.studentId || '暂未获取'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">姓名：</text>
+      <text class="value">{{applyDetail.studentName || '暂未获取'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">联系电话：</text>
+      <text class="value">{{applyDetail.studentPhone || '暂未获取'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">申请教室：</text>
+      <text class="value">{{applyDetail.classroomNo || '暂未获取'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">申请人数：</text>
+      <text class="value">{{applyDetail.applyPersonCount || '暂未获取'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">使用时间：</text>
+      <text class="value">
+        {{(applyDetail.applyUseTime && applyDetail.applyUseTime.length>0) ? (applyDetail.applyUseTime[0].startTime + ' 至 ' + applyDetail.applyUseTime[0].endTime) : '暂未获取'}}
+      </text>
+    </view>
+    <view class="info-row">
+      <text class="label">申请用途：</text>
+      <text class="value">{{applyDetail.applyReason || '暂未获取'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">申请时间：</text>
+      <text class="value">{{applyDetail.applyTime || '暂未获取'}}</text>
+    </view>
+  </view>
+
+  <!-- 空状态：无数据时显示 -->
+  <view class="empty-state" wx:else>
+    <text class="empty-tip">未获取到申请详情</text>
+  </view>
+
+  <!-- 审核按钮组：有数据时显示 -->
+  <view class="audit-btn-group" wx:if="{{hasData}}">
+    <button class="reject-btn" bindtap="rejectApply">驳回申请</button>
+    <button class="approve-btn" bindtap="approveApply">同意申请</button>
+  </view>
+</view>

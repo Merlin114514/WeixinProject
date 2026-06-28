@@ -1,0 +1,83 @@
+<view class="container">
+  <view class="register-title">用户注册</view>
+
+  <!-- 身份选择 -->
+  <view class="role-select">
+    <view 
+      class="role-item {{activeRole === 'student' ? 'active' : ''}}"
+      bindtap="changeRole"
+      data-role="student"
+    >
+      学生
+    </view>
+    <view 
+      class="role-item {{activeRole === 'teacher' ? 'active' : ''}}"
+      bindtap="changeRole"
+      data-role="teacher"
+    >
+      老师
+    </view>
+  </view>
+
+  <!-- 新增：头像上传区域（放在身份选择下方，输入框上方） -->
+  <view class="avatar-wrap" bindtap="chooseAvatar">
+    <image src="{{avatarUrl || '/images/my.png'}}" class="avatar" mode="aspectFill"></image>
+    <text class="avatar-tip">点击上传头像</text>
+  </view>
+
+  <!-- 用户名输入 -->
+  <view class="input-wrap">
+    <view class="input-label">用户名</view>
+    <input 
+      class="input-content"
+      placeholder="请输入你的姓名"
+      value="{{username}}"
+      bindinput="inputUsername"
+    />
+  </view>
+
+  <!-- 学号/工号输入 -->
+  <view class="input-wrap">
+    <view class="input-label">{{activeRole === 'student' ? '学号' : '工号'}}</view>
+    <input 
+      class="input-content"
+      placeholder="请输入{{activeRole === 'student' ? '学号' : '工号'}}"
+      value="{{account}}"
+      bindinput="inputAccount"
+    />
+  </view>
+
+  <!-- 密码输入 -->
+  <view class="input-wrap">
+    <view class="input-label">设置密码</view>
+    <input 
+      class="input-content"
+      placeholder="请设置6-16位密码"
+      value="{{password}}"
+      bindinput="inputPassword"
+      type="password"
+    />
+  </view>
+
+  <!-- 确认密码输入 -->
+  <view class="input-wrap">
+    <view class="input-label">确认密码</view>
+    <input 
+      class="input-content"
+      placeholder="请再次输入密码"
+      value="{{confirmPwd}}"
+      bindinput="inputConfirmPwd"
+      type="password"
+    />
+  </view>
+
+  <!-- 注册按钮 -->
+  <button class="register-btn" bindtap="submitRegister" loading="{{registerLoading}}">
+    注册
+  </button>
+
+  <!-- 返回登录 -->
+  <view class="login-tip" bindtap="gotoLogin">
+    已有账号？点击返回登录
+  </view>
+</view>

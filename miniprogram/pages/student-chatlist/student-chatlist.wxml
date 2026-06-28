@@ -1,0 +1,33 @@
+
+<view class="chat-list-container">
+
+  <view 
+    class="chat-item" 
+    wx:for="{{chatList}}" 
+    wx:key="friendOpenid"
+    bindtap="gotoChat" 
+    data-friendopenid="{{item.friendOpenid}}" 
+    data-friendavatar="{{item.friendAvatar}}" 
+    data-friendname="{{item.friendName}}" 
+  >
+    <!-- 头像 -->
+    <image class="avatar" src="{{item.friendAvatar}}" mode="widthFix"></image>
+    <!-- 消息信息 -->
+    <view class="chat-info">
+      <view class="top">
+        <text class="friend-name">{{item.friendName}}</text>
+        <text class="msg-time">{{item.lastMsgTime}}</text>
+      </view>
+      <view class="bottom">
+        <text class="last-msg">{{item.lastMsgContent}}</text>
+        <!-- 未读数量 -->
+        <view class="unread-badge" wx:if="{{item.unreadCount > 0}}">{{item.unreadCount}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空列表提示 -->
+  <view class="empty-tip" wx:if="{{chatList.length === 0}}">
+    暂无老师好友
+  </view>
+</view>

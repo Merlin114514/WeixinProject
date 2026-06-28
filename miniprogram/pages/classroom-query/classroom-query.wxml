@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="page-title">教室实时使用情况</view>
+
+  <!-- 教室列表 -->
+  <view class="classroom-list" wx:if="{{classroomList.length > 0}}">
+    <view class="classroom-item" wx:for="{{classroomList}}" wx:key="_id" bindtap="gotoApplyPage" data-classroom="{{item}}">
+      <!-- 状态标签 -->
+      <view class="status-tag {{item.status === 'idle' ? 'idle' : (item.status === 'occupied' ? 'occupied' : 'maintain')}}">
+        {{item.status === 'idle' ? '空闲' : (item.status === 'occupied' ? '已占用' : '维修中')}}
+      </view>
+      <view class="classroom-info">
+        <view class="classroom-no">{{item.classroomNo}}</view>
+        <view class="classroom-attr">
+          <text>位置：{{item.location}}</text>
+          <text>容量：{{item.capacity}}人</text>
+        </view>
+        <!-- 已占用时间段 -->
+        <view class="used-time" wx:if="{{item.useTimeList.length > 0}}">
+          已占用：{{item.useTimeList[0].startTime}}-{{item.useTimeList[0].endTime}}
+        </view>
+      </view>
+      <!-- 申请按钮（仅空闲显示） -->
+      <view class="apply-btn" wx:if="{{item.status === 'idle'}}">申请使用</view>
+    </view>
+  </view>
+
+  <!-- 空列表提示 -->
+  <view class="empty-tip" wx:else>暂无教室数据</view>
+</view>

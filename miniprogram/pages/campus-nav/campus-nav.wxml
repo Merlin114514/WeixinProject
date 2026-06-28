@@ -1,0 +1,94 @@
+<!-- 整体容器 -->
+<view class="container">
+  <!-- 输入框区域 -->
+  <view class="input-wrap">
+    <!-- 起点输入框 -->
+    <view class="input-item">
+      <text class="label">起点位置：</text>
+      <input 
+        class="input" 
+        placeholder="请输入起点（如：校园正门、第一教学楼）"
+        bindinput="onStartInput"
+        value="{{startInputVal}}"
+      />
+    </view>
+
+    <!-- 终点输入框 -->
+    <view class="input-item">
+      <text class="label">终点位置：</text>
+      <input 
+        class="input" 
+        placeholder="请输入终点（如：图书馆、学生宿舍）"
+        bindinput="onEndInput"
+        value="{{endInputVal}}"
+      />
+    </view>
+
+    <!-- 路径规划选项（出行方式+规划类型） -->
+    <view class="plan-option-wrap">
+      <!-- 出行方式选择 -->
+      <view class="option-item">
+        <text class="option-label">出行方式：</text>
+        <view class="option-list">
+          <view 
+            class="option-btn {{activeMode === item.type ? 'active' : ''}}"
+            wx:for="{{modeList}}"
+            wx:key="type"
+            bindtap="selectMode"
+            data-type="{{item.type}}"
+          >
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+
+      <!-- 规划类型选择 -->
+      <view class="option-item">
+        <text class="option-label">规划类型：</text>
+        <view class="option-list">
+          <view 
+            class="option-btn {{activePlan === item.type ? 'active' : ''}}"
+            wx:for="{{planList}}"
+            wx:key="type"
+            bindtap="selectPlan"
+            data-type="{{item.type}}"
+          >
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 确定按钮 -->
+    <button class="confirm-btn" bindtap="onConfirm">计算距离并导航</button>
+  </view>
+
+  <!-- 距离显示区域 -->
+  <view class="distance-show" wx:if="{{distance}}">
+    起点 → 终点：{{distance}}
+  </view>
+
+  <!-- 路径规划结果显示 -->
+  <view class="plan-result-show" wx:if="{{planResult.show}}">
+    <view class="result-item">出行方式：{{planResult.modeName}}</view>
+    <view class="result-item">规划类型：{{planResult.planName}}</view>
+    <view class="result-item">预计时间：{{planResult.timeText}}</view>
+    <view class="result-item">路径描述：{{planResult.desc}}</view>
+  </view>
+
+  <!-- 地图区域（修复LatLng参数问题，属性配置合法） -->
+  <view class="map-wrap">
+    <map
+      class="map"
+      latitude="{{centerLat}}"
+      longitude="{{centerLon}}"
+      scale="14"
+      polyline="{{polyline}}" 
+      markers="{{markers}}"
+      show-location="{{false}}"
+      enable-zoom="{{true}}"
+      enable-scroll="{{true}}"
+      bindmarkertap="onMarkerTap" 
+    ></map>
+  </view>
+</view>

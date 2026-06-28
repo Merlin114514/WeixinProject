@@ -37,7 +37,6 @@
     </view>
   </view>
 
-  <!-- 新增：我的课程区域 -->
   <view class="my-course-container">
     <!-- 标题栏 -->
     <view class="course-header">
